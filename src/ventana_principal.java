@@ -10,6 +10,7 @@ public class ventana_principal {
    static JFrame framePiezas = new JFrame("ventana_Piezas");
    static JFrame frameGestionProvedores = new JFrame("Gestion_Proveedores");
    static JFrame frameGestionPiezas = new JFrame("Gestion Piezas");
+   static JFrame frameListadoPiezas = new JFrame("Listado Piezas");
     private JButton baseDeDatosButton;
     private JButton buttonProveedores;
     private JButton buttonPiezas;
@@ -63,5 +64,10 @@ frameGestionProvedores.setVisible(false);
         frameListadoProveedores.setContentPane(new Listado_Proveedores().PanelListadoProveedores);
         frameListadoProveedores.pack();
         frameListadoProveedores.setVisible(false);
+
+        //lsitado piezas
+        frameListadoPiezas.setContentPane(new Listado_Piezas().PanelListadoPiezas);
+        frameListadoPiezas.pack();
+        frameListadoPiezas.setVisible(false);
     }
 }

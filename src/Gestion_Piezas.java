@@ -114,5 +114,11 @@ public class Gestion_Piezas {
                 textPiezasPrecio.setText("0");
             }
         });
+        buttonListadoPiezas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana_principal.frameListadoPiezas.setVisible(true);
+            }
+        });
     }
 }
