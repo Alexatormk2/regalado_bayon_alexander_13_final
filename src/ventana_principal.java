@@ -33,21 +33,26 @@ public class ventana_principal {
     }
 
     public static void main(String[] args) {
-
+//ventana principal
         frameMain.setContentPane(new ventana_principal().PanelMain);
     frameMain.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frameMain.pack();
         frameMain.setVisible(true);
-
+//ventana proveedores
 
         frameProveedores.setContentPane(new Ventana_Proveedores().PanelProveedores);
 
         frameProveedores.pack();
         frameProveedores.setVisible(false);
-
+//ventana piezas
         framePiezas.setContentPane(new ventana_Piezas().PanelPieza);
         framePiezas.pack();
         framePiezas.setVisible(false);
 
+
+        //gestion proveedores
+        frameGestionProvedores.setContentPane(new Gestion_Proveedores().panelGestionProveedores);
+frameGestionProvedores.pack();
+frameGestionProvedores.setVisible(false);
     }
 }

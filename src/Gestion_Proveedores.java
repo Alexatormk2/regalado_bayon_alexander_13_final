@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Gestion_Proveedores {
-    private JPanel panel1;
+     JPanel panelGestionProveedores;
     private JButton limpiarButtonProve;
     private JButton insertarButton;
     private JButton modificarButtonProve;
