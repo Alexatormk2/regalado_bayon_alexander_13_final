@@ -49,6 +49,12 @@
                   <text value="Eliminar"/>
                 </properties>
               </component>
+              <component id="77bb7" class="javax.swing.JButton" binding="buttonListadoProveedores">
+                <constraints/>
+                <properties>
+                  <text value="ListadoProveedores"/>
+                </properties>
+              </component>
             </children>
           </toolbar>
           <component id="8ff0d" class="javax.swing.JTextField" binding="textProveedoresDireccion">

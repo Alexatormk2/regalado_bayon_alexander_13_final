@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Gestion_Proveedores {
      JPanel panelGestionProveedores;
@@ -15,4 +17,16 @@ public class Gestion_Proveedores {
     private JLabel label3;
     private JLabel label4;
     private JLabel label6;
+    private JButton buttonListadoProveedores;
+
+    public Gestion_Proveedores() {
+        buttonListadoProveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ventana_principal.frameListadoProveedores.setVisible(true);
+
+            }
+        });
+    }
 }

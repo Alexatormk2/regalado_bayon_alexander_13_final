@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 public class ventana_principal {
    static JFrame frameMain = new JFrame("ventana_principal");
+   static  JFrame frameListadoProveedores = new JFrame("Listado_Proveedores");
    static    JFrame frameProveedores = new JFrame("Ventana_Proveedores");
    static JFrame framePiezas = new JFrame("ventana_Piezas");
    static JFrame frameGestionProvedores = new JFrame("Gestion_Proveedores");
@@ -54,5 +55,9 @@ public class ventana_principal {
         frameGestionProvedores.setContentPane(new Gestion_Proveedores().panelGestionProveedores);
 frameGestionProvedores.pack();
 frameGestionProvedores.setVisible(false);
+//listado proveedores
+        frameListadoProveedores.setContentPane(new Listado_Proveedores().PanelListadoProveedores);
+        frameListadoProveedores.pack();
+        frameListadoProveedores.setVisible(false);
     }
 }
