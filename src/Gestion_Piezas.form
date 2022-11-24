@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Gestion_Piezas">
-  <grid id="27dc6" layout-manager="BorderLayout" hgap="0" vgap="0">
+  <grid id="27dc6" binding="panelGestionPiezas" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="558" height="257"/>
     </constraints>
@@ -54,7 +54,7 @@
               </component>
             </children>
           </toolbar>
-          <component id="cface" class="javax.swing.JTextField" binding="textProveedoresDireccion">
+          <component id="cface" class="javax.swing.JTextField" binding="textPiezasDescripcion">
             <constraints>
               <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -70,13 +70,15 @@
               <text value="Descripcion"/>
             </properties>
           </component>
-          <component id="86ed0" class="javax.swing.JTextField" binding="textProveedoresApellido">
+          <component id="86ed0" class="javax.swing.JTextField" binding="textPiezasPrecio">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="0"/>
+            </properties>
           </component>
           <component id="ddbdf" class="javax.swing.JLabel" binding="label4">
             <constraints>
@@ -86,7 +88,7 @@
               <text value="Preico"/>
             </properties>
           </component>
-          <component id="c87f0" class="javax.swing.JTextField" binding="textProveedoresNombre">
+          <component id="c87f0" class="javax.swing.JTextField" binding="textPiezasNombre">
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -102,7 +104,7 @@
               <text value="Nombre"/>
             </properties>
           </component>
-          <component id="5065e" class="javax.swing.JTextField" binding="textProveedorCodigo">
+          <component id="5065e" class="javax.swing.JTextField" binding="textPiezasCodigo">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>

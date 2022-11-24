@@ -98,14 +98,28 @@ textProveedoresDireccion.setText("");
                         pstmt.setString(4, direccion);
 
                         pstmt.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Insert hecho correctamente");
+                        textProveedorCodigo.setText("");
+                        textProveedoresApellido.setText("");
+                        textProveedoresDireccion.setText("");
+                        textProveedoresNombre.setText("");
+
                     }
                 } catch (SQLDataException ex) {
                     System.out.println("hubo un error en los datos de la query sql revisalo:  " + ex);
+                    JOptionPane.showMessageDialog(null, "hubo un error en los datos de la query sql o la conexion revisalo:  ");
+                    JOptionPane.showMessageDialog(null, ex);
 
                 } catch (ClassNotFoundException ew) {
                     System.out.println("La clase no fue encontrada revisa la config del run por favor  " + ew);
+                    JOptionPane.showMessageDialog(null, "La clase no fue encontrada revisa la config del run por favor  ");
+                    JOptionPane.showMessageDialog(null, ew);
                 } catch (SQLException ej) {
-                    System.out.println("Exception a la hora de la conexion  " + ej);
+                    System.out.println("Exception a la hora de la conexion revisa los datos de la conexion tnato como el puerto como el usuario  " + ej);
+
+                    JOptionPane.showMessageDialog(null, "Exception a la hora de la conexion revisa los datos de la conexion tnato como el puerto como el usuario  ");
+                    JOptionPane.showMessageDialog(null, ej);
+
                 }
 
             }

@@ -9,6 +9,7 @@ public class ventana_principal {
    static    JFrame frameProveedores = new JFrame("Ventana_Proveedores");
    static JFrame framePiezas = new JFrame("ventana_Piezas");
    static JFrame frameGestionProvedores = new JFrame("Gestion_Proveedores");
+   static JFrame frameGestionPiezas = new JFrame("Gestion Piezas");
     private JButton baseDeDatosButton;
     private JButton buttonProveedores;
     private JButton buttonPiezas;
@@ -49,7 +50,10 @@ public class ventana_principal {
         framePiezas.setContentPane(new ventana_Piezas().PanelPieza);
         framePiezas.pack();
         framePiezas.setVisible(false);
-
+//gestion piezas
+        frameGestionPiezas.setContentPane(new Gestion_Piezas().panelGestionPiezas);
+        frameGestionPiezas.pack();
+        frameGestionPiezas.setVisible(false);
 
         //gestion proveedores
         frameGestionProvedores.setContentPane(new Gestion_Proveedores().panelGestionProveedores);

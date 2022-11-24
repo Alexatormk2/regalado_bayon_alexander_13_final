@@ -13,16 +13,17 @@ public class Gestion_Piezas {
     private JButton insertarButton;
     private JButton modificarButtonProve;
     private JButton eliminarButtonProve;
-    private JTextField textProveedoresDireccion;
+    private JTextField textPiezasDescripcion;
     private JLabel label6;
-    private JTextField textProveedoresApellido;
+    private JTextField textPiezasPrecio;
     private JLabel label4;
-    private JTextField textProveedoresNombre;
+    private JTextField textPiezasNombre;
     private JLabel label3;
-    private JTextField textProveedorCodigo;
+    private JTextField textPiezasCodigo;
     private JLabel label2;
     private JLabel label1;
     private JButton buttonListadoPiezas;
+     JPanel panelGestionPiezas;
 
     public Gestion_Piezas() {
         insertarButton.addActionListener(new ActionListener() {
@@ -32,39 +33,34 @@ public class Gestion_Piezas {
 
                 try {
 
-                    String codigo = textProveedorCodigo.getText();
+                    String codigo = textPiezasCodigo.getText();
 
 
-                    String nombre = textProveedoresNombre.getText();
+                    String nombre = textPiezasNombre.getText();
 
-                   Double Precio  = Double.valueOf(textProveedoresApellido.getText());
+                    double Precio = Double.parseDouble(textPiezasPrecio.getText());
 
-                    String direccion = textProveedoresDireccion.getText();
+                    String descripcion = textPiezasDescripcion.getText();
                     //revisar que la longitud este bien controlada mediante if y else if
                     //revisar codigo
                     if (codigo.length() != 6) {
 
                         JOptionPane.showMessageDialog(null, "Error longitud de codigo superada o dato vacio por favor  vuelve a dar el dato tiene que ser de 6 caracteres max");
-                        textProveedorCodigo.setText("");
+                        textPiezasCodigo.setText("");
 
 
 //revisar nombre
                     } else if (nombre.length() > 20 || nombre.length() < 2) {
 
                         JOptionPane.showMessageDialog(null, "Error longitud de nombre superada o muy corto o vacio por favor vuelve a dar el dato,tiene que ser entre 3 a 20 caracteres max ");
-                        textProveedoresNombre.setText("");
+                        textPiezasNombre.setText("");
 
                         //revisar Precio
-                    } else if (Precio== 0 || Precio > 60) {
+                    } else if (Precio == 0 || Precio > 60) {
                         JOptionPane.showMessageDialog(null, "Precio deber ser mayor  a 0 y menor a 60");
-                        textProveedoresApellido.setText("");
+                        textPiezasPrecio.setText("");
 
-                    } else if (direccion.length() > 40 || direccion.length() < 10) {
-
-                        JOptionPane.showMessageDialog(null, "Error longitud de dirrecion superada o muy corto o vacio por favor vuelve a dar el dato,tiene que ser entre 10 a 40 caracteres max");
-                        textProveedoresDireccion.setText("");
-
-                    } else {
+                    }  else {
                         Connection conexion = null;
 
                         Class.forName("org.mariadb.jdbc.Driver");
@@ -73,25 +69,50 @@ public class Gestion_Piezas {
                         pstmt.setString(1, codigo);
                         pstmt.setString(2, nombre);
                         pstmt.setDouble(3, Precio);
-                        pstmt.setString(4, direccion);
+                        pstmt.setString(4, descripcion);
 
                         pstmt.executeUpdate();
+
+                        JOptionPane.showMessageDialog(null, "Insert hecho correctamente");
+                        textPiezasCodigo.setText("");
+                        textPiezasNombre.setText("");
+                        textPiezasDescripcion.setText("");
+                        textPiezasPrecio.setText("0");
                     }
                 } catch (SQLDataException ex) {
-                    System.out.println("hubo un error en los datos de la query sql revisalo:  " + ex);
-
+                    System.out.println("hubo un error en los datos de la query sql o la conexion revisalo:  " + ex);
+                    JOptionPane.showMessageDialog(null, "hubo un error en los datos de la query sql o la conexion revisalo:  ");
+                    JOptionPane.showMessageDialog(null, ex);
                 } catch (ClassNotFoundException ew) {
                     System.out.println("La clase no fue encontrada revisa la config del run por favor  " + ew);
+                    JOptionPane.showMessageDialog(null, "La clase no fue encontrada revisa la config del run por favor  ");
+                    JOptionPane.showMessageDialog(null, ew);
+
                 } catch (SQLException ej) {
-                    System.out.println("Exception a la hora de la conexion  " + ej);
-                }catch (NumberFormatException eo){
-                    System.out.println("Se esperaba un valor numerico por favor vuelva a dar el dato del campo precio " );
-                    JOptionPane.showMessageDialog(null,  eo);
+                    System.out.println("Exception a la hora de la conexion revisa los datos de la conexion tnato como el puerto como el usuario  " + ej);
+
+                    JOptionPane.showMessageDialog(null, "Exception a la hora de la conexion revisa los datos de la conexion tnato como el puerto como el usuario  ");
+                    JOptionPane.showMessageDialog(null, ej);
+
+                } catch (NumberFormatException eo) {
+                    System.out.println("Se esperaba un valor numerico por favor vuelva a dar el dato del campo precio ");
+
+                    JOptionPane.showMessageDialog(null, "Se esperaba un valor numerico por favor vuelva a dar el dato del campo precio ");
+                    JOptionPane.showMessageDialog(null, eo);
 
                 }
 
             }
 
+        });
+        limpiarButtonProve.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textPiezasCodigo.setText("");
+                textPiezasNombre.setText("");
+                textPiezasDescripcion.setText("");
+                textPiezasPrecio.setText("0");
+            }
         });
     }
 }
