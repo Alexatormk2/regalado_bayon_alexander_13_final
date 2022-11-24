@@ -6,6 +6,8 @@ import java.io.FileReader;
 public class ventana_principal {
    static JFrame frameMain = new JFrame("ventana_principal");
    static    JFrame frameProveedores = new JFrame("Ventana_Proveedores");
+   static JFrame framePiezas = new JFrame("ventana_Piezas");
+   static JFrame frameGestionProvedores = new JFrame("Gestion_Proveedores");
     private JButton baseDeDatosButton;
     private JButton buttonProveedores;
     private JButton buttonPiezas;
@@ -22,6 +24,12 @@ public class ventana_principal {
                 frameProveedores.setVisible(true);
             }
         });
+        buttonPiezas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                framePiezas.setVisible(true);
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -33,9 +41,13 @@ public class ventana_principal {
 
 
         frameProveedores.setContentPane(new Ventana_Proveedores().PanelProveedores);
-        frameProveedores.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         frameProveedores.pack();
         frameProveedores.setVisible(false);
+
+        framePiezas.setContentPane(new ventana_Piezas().PanelPieza);
+        framePiezas.pack();
+        framePiezas.setVisible(false);
 
     }
 }
