@@ -77,7 +77,7 @@ public class Listado_Proveedores {
                 try {
                     if (Listaproveedores[valorBuscador] == null ||valorBuscador == contador) {
                         JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
-                       l textRegistrosNumber.setText(String.valueOf(valorBuscador -1 ));
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador -1 ));
 
                     }  else if (valorBuscador < contador) {
                         valorBuscador++;
