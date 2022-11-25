@@ -60,7 +60,7 @@ public class Listado_Proveedores {
                     textDireccion.setText(Listaproveedores[0].direccion);
                     textApellidos.setText(Listaproveedores[0].apellido);
                     textNombre.setText(Listaproveedores[0].nombre);
-                    buttonCargarDatos.setVisible(false);
+
 
                 } catch (ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
@@ -76,9 +76,8 @@ public class Listado_Proveedores {
             public void actionPerformed(ActionEvent e) {
                 try {
                     if (Listaproveedores[valorBuscador] == null ||valorBuscador == contador) {
-
-                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados");
-                        textRegistrosNumber.setText(String.valueOf(valorBuscador -1 ));
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
+                       l textRegistrosNumber.setText(String.valueOf(valorBuscador -1 ));
 
                     }  else if (valorBuscador < contador) {
                         valorBuscador++;
@@ -96,8 +95,8 @@ public class Listado_Proveedores {
 
 
                 } catch (HeadlessException ex) {
-                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos");
-                    JOptionPane.showMessageDialog(null, ex);
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex,"Error",JOptionPane.ERROR_MESSAGE);
 
 
                 }

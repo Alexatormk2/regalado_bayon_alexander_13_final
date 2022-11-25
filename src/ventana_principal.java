@@ -44,30 +44,34 @@ public class ventana_principal {
 //ventana proveedores
 
         frameProveedores.setContentPane(new Ventana_Proveedores().PanelProveedores);
-
+    frameProveedores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameProveedores.pack();
         frameProveedores.setVisible(false);
 //ventana piezas
         framePiezas.setContentPane(new ventana_Piezas().PanelPieza);
         framePiezas.pack();
         framePiezas.setVisible(false);
+        framePiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 //gestion piezas
         frameGestionPiezas.setContentPane(new Gestion_Piezas().panelGestionPiezas);
         frameGestionPiezas.pack();
         frameGestionPiezas.setVisible(false);
+        frameGestionPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         //gestion proveedores
         frameGestionProvedores.setContentPane(new Gestion_Proveedores().panelGestionProveedores);
 frameGestionProvedores.pack();
 frameGestionProvedores.setVisible(false);
+frameGestionProvedores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 //listado proveedores
         frameListadoProveedores.setContentPane(new Listado_Proveedores().PanelListadoProveedores);
         frameListadoProveedores.pack();
         frameListadoProveedores.setVisible(false);
-
+frameListadoProveedores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         //lsitado piezas
         frameListadoPiezas.setContentPane(new Listado_Piezas().PanelListadoPiezas);
         frameListadoPiezas.pack();
         frameListadoPiezas.setVisible(false);
+        frameListadoPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 }

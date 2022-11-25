@@ -58,7 +58,7 @@ public class Listado_Piezas {
                     textDescripcion.setText(ListaPiezas[0].descrpcion);
                     textPrecio.setText(String.valueOf(ListaPiezas[0].precio));
                     textNombre.setText(ListaPiezas[0].Nombre);
-                    buttonCargarDatos.setVisible(false);
+
 
                 } catch (ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
@@ -75,7 +75,7 @@ public class Listado_Piezas {
                 try {
                     if (ListaPiezas[valorBuscador] == null || valorBuscador == contador) {
 
-                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados");
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
                         textRegistrosNumber.setText(String.valueOf(valorBuscador - 1));
 
                     } else if (valorBuscador < contador) {
@@ -91,8 +91,8 @@ public class Listado_Piezas {
 
 
                 } catch (HeadlessException ex) {
-                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos");
-                    JOptionPane.showMessageDialog(null, ex);
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex,"Error",JOptionPane.ERROR_MESSAGE);
 
 
                 }
