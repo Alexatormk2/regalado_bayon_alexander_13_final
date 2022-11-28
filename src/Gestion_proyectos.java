@@ -20,7 +20,7 @@ public class Gestion_proyectos {
     private JTextField textProyectosCodigo;
     private JLabel label2;
     private JLabel label1;
-     JPanel PanelGestionProyectos;
+    JPanel PanelGestionProyectos;
 
     public Gestion_proyectos() {
         insertarButton.addActionListener(new ActionListener() {
@@ -30,7 +30,7 @@ public class Gestion_proyectos {
 
                 try {
 
-                    String codigo = textProyectosCodigo.getText();
+                    String codigo = textProyectosCodigo.getText().toUpperCase();
 
 
                     String nombre = textProyectosNombre.getText();

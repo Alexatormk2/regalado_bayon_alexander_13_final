@@ -33,7 +33,7 @@ public class Gestion_Piezas {
 
                 try {
 
-                    String codigo = textPiezasCodigo.getText();
+                    String codigo = textPiezasCodigo.getText().toUpperCase();
 
 
                     String nombre = textPiezasNombre.getText();

@@ -18,7 +18,7 @@ public class Ventana_Proveedores {
         buttonConsultaProveedores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ventana_principal.frameConsultasProveedor.setVisible(true);
+                ventana_principal.frameMenuConsultasProve.setVisible(true);
             }
         });
     }

@@ -73,10 +73,10 @@ public class Listado_Piezas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (ventana_principal.ListaPiezas[valorBuscador] == null || valorBuscador == contador) {
+                    if (ventana_principal.ListaPiezas[valorBuscador] == null || valorBuscador == contador -1) {
 
                         JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
-                        textRegistrosNumber.setText(String.valueOf(valorBuscador - 1));
+
 
                     } else if (valorBuscador < contador) {
                         valorBuscador++;
@@ -101,6 +101,103 @@ public class Listado_Piezas {
             }
 
 
+        });
+        buttonUltimoReg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (ventana_principal.ListaPiezas[valorBuscador] == null || valorBuscador == contador -1) {
+
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    } else if (valorBuscador < contador) {
+                        valorBuscador = contador-1;
+
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador));
+                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
+                        textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
+                        textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);
+
+                    }
+
+
+                } catch (HeadlessException ex) {
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex,"Error",JOptionPane.ERROR_MESSAGE);
+
+
+                }
+
+
+            }
+
+        });
+        button_reg_siguiente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                try {
+                    if (ventana_principal.ListaPiezas[valorBuscador] == null || valorBuscador == 0) {
+
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    } else if (valorBuscador < contador) {
+                        valorBuscador--;
+
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador));
+                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
+                        textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
+                        textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);
+
+                    }
+
+
+                } catch (HeadlessException ex) {
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex,"Error",JOptionPane.ERROR_MESSAGE);
+
+
+                }
+
+
+
+
+            }
+        });
+        buttonPrimerReg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    if (ventana_principal.ListaPiezas[valorBuscador] == null || valorBuscador == 0) {
+
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    } else if (valorBuscador < contador) {
+                        valorBuscador =0;
+
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador));
+                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
+                        textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
+                        textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);
+
+                    }
+
+
+                } catch (HeadlessException ex) {
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex,"Error",JOptionPane.ERROR_MESSAGE);
+
+
+                }
+            }
         });
     }
 }

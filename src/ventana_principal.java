@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileReader;
 
 public class ventana_principal {
+    static  JFrame frameConsultarProveedorDireccion = new JFrame("Consultas Proveedor Direccion");
     static JFrame frameMain = new JFrame("ventana_principal");
-    static JFrame frameConsultasProveedor = new JFrame("Consultas Proveedor");
+    static JFrame frameMenuConsultasProve = new JFrame("Menu Consultas");
+    static JFrame frameConsultasProveedorCodigo = new JFrame("Consultas Proveedor codigo");
+    static JFrame frameConsultasProveedorNombre = new JFrame("Consultas Proveedor nombre");
     static JFrame frameListadoProveedores = new JFrame("Listado_Proveedores");
     static JFrame frameProveedores = new JFrame("Ventana_Proveedores");
     static JFrame framePiezas = new JFrame("ventana_Piezas");
@@ -21,9 +23,10 @@ public class ventana_principal {
     private JButton buttonGestionGlobal;
     private JButton buttonAyuda;
     private JPanel PanelMain;
-public static Proyectos[]  ListadoProyectos = new Proyectos[100];
-   public static  Proveedores[] Listaproveedores = new Proveedores[100];
-   public static  Piezas[] ListaPiezas = new Piezas[100];
+    public static Proyectos[] ListadoProyectos = new Proyectos[100];
+    public static Proveedores[] Listaproveedores = new Proveedores[100];
+    public static Piezas[] ListaPiezas = new Piezas[100];
+
     public ventana_principal() {
         buttonProveedores.addActionListener(new ActionListener() {
             @Override
@@ -97,10 +100,27 @@ public static Proyectos[]  ListadoProyectos = new Proyectos[100];
 
 
         //conuslta provedores
-        frameConsultasProveedor.setContentPane(new ConsultaProveedores().PanelConsultaProveedores);
-        frameConsultasProveedor.pack();
-        frameConsultasProveedor.setVisible(false);
-        frameConsultasProveedor.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        //menu
+        frameMenuConsultasProve.setContentPane(new menuConsultasProveedor().panelMenuProve);
+        frameMenuConsultasProve.pack();
+        frameMenuConsultasProve.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameMenuConsultasProve.setVisible(false);
+        //codigo
+        frameConsultasProveedorCodigo.setContentPane(new ConsultaProveedoresCodigo().PanelConsultaProveedores);
+        frameConsultasProveedorCodigo.pack();
+        frameConsultasProveedorCodigo.setVisible(false);
+        frameConsultasProveedorCodigo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        //nombre
+        frameConsultasProveedorNombre.setContentPane(new ConsultaProveedorNombre().panelConsultasNombreProveedor);
+        frameConsultasProveedorNombre.pack();
+        frameConsultasProveedorNombre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameConsultasProveedorNombre.setVisible(false);
+        //direccion
+        frameConsultarProveedorDireccion.setContentPane(new ConsultaProveedorDireccion().panelConsutlarDireccionProve);
+        frameConsultarProveedorDireccion.pack();
+        frameConsultarProveedorDireccion.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameConsultarProveedorDireccion.setVisible(false);
+
 
     }
 }

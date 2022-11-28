@@ -22,7 +22,7 @@ public class Listado_Proveedores {
     private JTextField textMaxREG;
     private JButton button_reg_adelante;
     private JButton buttonUltimoReg;
-    private JButton button_reg_siguiente;
+    private JButton button_reg_anterior;
     private JButton buttonPrimerReg;
     private JButton buttonCargarDatos;
 
@@ -46,7 +46,7 @@ public class Listado_Proveedores {
                         //EMPLEADOS:	1-DNI VARCHAR, 2-NOMBRE VARCHAR, 3-APELLIDO VARCHAR, 4-FECHA_NACIMIENTO VARCHAR, 5-FECHA_CONTRATACION VARCHAR, 6-NACIONALIDAD VARCHAR, 7-CARGO VARCHAR, 8-AGENCIA VARCHAR
                         System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ", Apellido: " + resul.getString(3) + ",Direccion: " + resul.getString(4));
                         Proveedores proveedores1 = new Proveedores(resul.getString(1), resul.getString(2), resul.getString(3), resul.getString(4));
-                       ventana_principal.Listaproveedores[contador] = proveedores1;
+                        ventana_principal.Listaproveedores[contador] = proveedores1;
                         contador++;
                         if (contador == 100) {
                             break;
@@ -54,8 +54,8 @@ public class Listado_Proveedores {
                     }
 
                     textRegistrosNumber.setText("0");
-                    textMaxREG.setText(String.valueOf(contador -1));
-                    valorBuscador =0;
+                    textMaxREG.setText(String.valueOf(contador - 1));
+                    valorBuscador = 0;
                     textCodigoProveedor.setText(ventana_principal.Listaproveedores[0].codigo);
                     textDireccion.setText(ventana_principal.Listaproveedores[0].direccion);
                     textApellidos.setText(ventana_principal.Listaproveedores[0].apellido);
@@ -75,14 +75,14 @@ public class Listado_Proveedores {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (ventana_principal.Listaproveedores[valorBuscador] == null ||valorBuscador == contador) {
-                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
-                        textRegistrosNumber.setText(String.valueOf(valorBuscador -1 ));
+                    if (ventana_principal.Listaproveedores[valorBuscador] == null || valorBuscador == contador - 1) {
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados", "INFO", JOptionPane.INFORMATION_MESSAGE);
 
-                    }  else if (valorBuscador < contador) {
+
+                    } else if (valorBuscador < contador) {
                         valorBuscador++;
 
-                        textRegistrosNumber.setText(String.valueOf(valorBuscador ));
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador));
                         textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
                         textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
                         textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
@@ -91,17 +91,100 @@ public class Listado_Proveedores {
                     }
 
 
-
-
-
                 } catch (HeadlessException ex) {
-                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos","Error",JOptionPane.ERROR_MESSAGE);
-                    JOptionPane.showMessageDialog(null, ex,"Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
 
 
                 }
 
 
+            }
+        });
+        button_reg_anterior.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (ventana_principal.Listaproveedores[valorBuscador] == null || valorBuscador == contador || valorBuscador == 0) {
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados", "INFO", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    } else if (valorBuscador < contador) {
+                        valorBuscador--;
+
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador));
+                        textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
+                        textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
+                        textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
+                        textNombre.setText(ventana_principal.Listaproveedores[valorBuscador].nombre);
+
+                    }
+
+
+                } catch (HeadlessException ex) {
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+
+
+                }
+            }
+        });
+        buttonUltimoReg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (ventana_principal.Listaproveedores[valorBuscador] == null || valorBuscador == contador - 1) {
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados", "INFO", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    } else if (valorBuscador < contador) {
+                        valorBuscador = contador - 1;
+
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador));
+                        textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
+                        textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
+                        textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
+                        textNombre.setText(ventana_principal.Listaproveedores[valorBuscador].nombre);
+
+                    }
+
+
+                } catch (HeadlessException ex) {
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+
+
+                }
+            }
+        });
+        buttonPrimerReg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                try {
+                    if (ventana_principal.Listaproveedores[valorBuscador] == null || valorBuscador == 0) {
+                        JOptionPane.showMessageDialog(null, "No hay mas valores guardados", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador - 1));
+
+                    } else if (valorBuscador < contador) {
+                        valorBuscador = 0;
+
+                        textRegistrosNumber.setText(String.valueOf(valorBuscador));
+                        textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
+                        textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
+                        textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
+                        textNombre.setText(ventana_principal.Listaproveedores[valorBuscador].nombre);
+
+                    }
+
+
+                } catch (HeadlessException ex) {
+                    JOptionPane.showMessageDialog(null, "Error no se puede continuar no hay mas datos", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+
+
+                }
             }
         });
     }

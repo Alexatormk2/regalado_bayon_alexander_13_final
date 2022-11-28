@@ -54,7 +54,7 @@ public class Gestion_Proveedores {
 
                 try {
 
-                    String codigo = textProveedorCodigo.getText();
+                    String codigo = textProveedorCodigo.getText().toUpperCase();
 
 
                     String nombre = textProveedoresNombre.getText();
