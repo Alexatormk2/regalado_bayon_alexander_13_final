@@ -93,7 +93,7 @@ if (comboProveedorCodigo.getSelectedIndex() <0){
 
                     }
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex, "Error  combobox,vacio", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,  "Selecciona un dato del combo box ");
 
                 }
 
