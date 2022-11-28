@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Ventana_Proveedores  {
+public class Ventana_Proveedores {
     private JButton buttonGestionProveedores;
     private JButton buttonConsultaProveedores;
     JPanel PanelProveedores;
@@ -13,6 +13,12 @@ public class Ventana_Proveedores  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana_principal.frameGestionProvedores.setVisible(true);
+            }
+        });
+        buttonConsultaProveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana_principal.frameConsultasProveedor.setVisible(true);
             }
         });
     }

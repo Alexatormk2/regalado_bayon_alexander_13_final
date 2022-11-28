@@ -26,7 +26,6 @@ public class Listado_Piezas {
     private JButton buttonPrimerReg;
     JPanel PanelListadoPiezas;
     int contador = 0;
-    Piezas[] ListaPiezas = new Piezas[100];
     int valorBuscador = 0;
 
     public Listado_Piezas() {
@@ -42,9 +41,10 @@ public class Listado_Piezas {
                     Statement sentencia = conexion.createStatement();
                     ResultSet resul = sentencia.executeQuery("SELECT * FROM PIEZAS;");
                     while (resul.next()) {
-                        System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ", Precio: " + resul.getDouble(3) + ",Direccion: " + resul.getString(4));
+                        System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ", Precio: " + resul.getDouble(3) + ",Descripcion: " + resul.getString(4));
                         Piezas piezas = new Piezas(resul.getString(1), resul.getString(2), resul.getDouble(3), resul.getString(4));
-                        ListaPiezas[contador] = piezas;
+
+                        ventana_principal.ListaPiezas[contador] = piezas;
                         contador++;
                         if (contador == 100) {
                             break;
@@ -54,10 +54,10 @@ public class Listado_Piezas {
                     textRegistrosNumber.setText("0");
                     textMaxREG.setText(String.valueOf(contador - 1));
                     valorBuscador = 0;
-                    textCodigoPiezas.setText(ListaPiezas[0].codigo);
-                    textDescripcion.setText(ListaPiezas[0].descrpcion);
-                    textPrecio.setText(String.valueOf(ListaPiezas[0].precio));
-                    textNombre.setText(ListaPiezas[0].Nombre);
+                    textCodigoPiezas.setText(ventana_principal.ListaPiezas[0].codigo);
+                    textDescripcion.setText(ventana_principal.ListaPiezas[0].descrpcion);
+                    textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[0].precio));
+                    textNombre.setText(ventana_principal.ListaPiezas[0].Nombre);
 
 
                 } catch (ClassNotFoundException ex) {
@@ -73,7 +73,7 @@ public class Listado_Piezas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (ListaPiezas[valorBuscador] == null || valorBuscador == contador) {
+                    if (ventana_principal.ListaPiezas[valorBuscador] == null || valorBuscador == contador) {
 
                         JOptionPane.showMessageDialog(null, "No hay mas valores guardados","INFO", JOptionPane.INFORMATION_MESSAGE);
                         textRegistrosNumber.setText(String.valueOf(valorBuscador - 1));
@@ -82,10 +82,10 @@ public class Listado_Piezas {
                         valorBuscador++;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoPiezas.setText(ListaPiezas[valorBuscador].codigo);
-                        textDescripcion.setText(ListaPiezas[valorBuscador].descrpcion);
-                        textPrecio.setText(String.valueOf(ListaPiezas[valorBuscador].precio));
-                        textNombre.setText(ListaPiezas[valorBuscador].Nombre);
+                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
+                        textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
+                        textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);
 
                     }
 

@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 public class ventana_principal {
     static JFrame frameMain = new JFrame("ventana_principal");
+    static JFrame frameConsultasProveedor = new JFrame("Consultas Proveedor");
     static JFrame frameListadoProveedores = new JFrame("Listado_Proveedores");
     static JFrame frameProveedores = new JFrame("Ventana_Proveedores");
     static JFrame framePiezas = new JFrame("ventana_Piezas");
@@ -20,8 +21,9 @@ public class ventana_principal {
     private JButton buttonGestionGlobal;
     private JButton buttonAyuda;
     private JPanel PanelMain;
-
-
+public static Proyectos[]  ListadoProyectos = new Proyectos[100];
+   public static  Proveedores[] Listaproveedores = new Proveedores[100];
+   public static  Piezas[] ListaPiezas = new Piezas[100];
     public ventana_principal() {
         buttonProveedores.addActionListener(new ActionListener() {
             @Override
@@ -92,5 +94,13 @@ public class ventana_principal {
         frameGestionPoyectos.pack();
         frameGestionPoyectos.setVisible(false);
         frameGestionPoyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+
+        //conuslta provedores
+        frameConsultasProveedor.setContentPane(new ConsultaProveedores().PanelConsultaProveedores);
+        frameConsultasProveedor.pack();
+        frameConsultasProveedor.setVisible(false);
+        frameConsultasProveedor.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
     }
 }
