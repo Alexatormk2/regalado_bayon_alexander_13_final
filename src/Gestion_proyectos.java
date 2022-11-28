@@ -21,6 +21,7 @@ public class Gestion_proyectos {
     private JLabel label2;
     private JLabel label1;
     JPanel PanelGestionProyectos;
+    private JButton buttonListadoProyectos;
 
     public Gestion_proyectos() {
         insertarButton.addActionListener(new ActionListener() {
@@ -61,7 +62,7 @@ public class Gestion_proyectos {
 
                         Class.forName("org.mariadb.jdbc.Driver");
                         conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
-                        PreparedStatement pstmt = conexion.prepareStatement("INSERT INTO `proyectos`(CODIGO, NOMBRE ,CIUDAD ) VALUES (?, ?, ? ");
+                        PreparedStatement pstmt = conexion.prepareStatement("INSERT INTO `proyectos`(CODIGO, NOMBRE ,CIUDAD ) VALUES (?, ?, ? )");
                         pstmt.setString(1, codigo);
                         pstmt.setString(2, nombre);
                         pstmt.setString(3, ciudad);
@@ -101,6 +102,12 @@ public class Gestion_proyectos {
                 textProyectosCodigo.setText("");
                 textProyectosNombre.setText("");
                 textProyectosCiudad.setText("");
+            }
+        });
+        buttonListadoProyectos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana_principal.frameListadoProyectos.setVisible(true);
             }
         });
     }

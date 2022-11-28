@@ -1,9 +1,12 @@
+import org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ventana_principal {
-    static  JFrame frameConsultarProveedorDireccion = new JFrame("Consultas Proveedor Direccion");
+    static JFrame frameConsultarProveedorDireccion = new JFrame("Consultas Proveedor Direccion");
+    static JFrame frameListadoProyectos = new JFrame("Listado proyectos");
     static JFrame frameMain = new JFrame("ventana_principal");
     static JFrame frameMenuConsultasProve = new JFrame("Menu Consultas");
     static JFrame frameConsultasProveedorCodigo = new JFrame("Consultas Proveedor codigo");
@@ -86,7 +89,11 @@ public class ventana_principal {
         frameListadoPiezas.pack();
         frameListadoPiezas.setVisible(false);
         frameListadoPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
+        //listado_proyectos
+        frameListadoProyectos.setContentPane(new listado_proyectos().panelListaProyecto);
+        frameListadoProyectos.pack();
+        frameListadoProyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameListadoProyectos.setVisible(false);
         //ventana proyectos
         frameVentanaProyectos.setContentPane(new ventana_Proyectos().PanelProyectos);
         frameVentanaProyectos.pack();
