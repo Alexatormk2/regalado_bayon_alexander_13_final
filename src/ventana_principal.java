@@ -5,9 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ventana_principal {
+    static JFrame FrameConsultasPiezasDescripcion = new JFrame("Consultas Piezas Nomnbre");
+    static JFrame frameConsultasPiezasCodigo = new JFrame("Consultas Piezas Codigo ");
+    static JFrame frameConsultasPiezasNombre = new JFrame("Consultas Piezas Codigo");
     static JFrame frameConsultarProveedorDireccion = new JFrame("Consultas Proveedor Direccion");
     static JFrame frameListadoProyectos = new JFrame("Listado proyectos");
     static JFrame frameMain = new JFrame("ventana_principal");
+    static JFrame frameMenuConsultasPiezas = new JFrame("Menu Consultas");
     static JFrame frameMenuConsultasProve = new JFrame("Menu Consultas");
     static JFrame frameConsultasProveedorCodigo = new JFrame("Consultas Proveedor codigo");
     static JFrame frameConsultasProveedorNombre = new JFrame("Consultas Proveedor nombre");
@@ -128,6 +132,26 @@ public class ventana_principal {
         frameConsultarProveedorDireccion.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameConsultarProveedorDireccion.setVisible(false);
 
+        //consulta piezas
+        //menu
+        frameMenuConsultasPiezas.setContentPane(new MenuConsultasPiezas().panelMenuPiezas);
+        frameMenuConsultasPiezas.pack();
+        frameMenuConsultasPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameMenuConsultasPiezas.setVisible(false);
+        //nombre
+        frameConsultasPiezasNombre.setContentPane(new ConsultaPiezasNombre().panelConsultaPiezasNombre);
+        frameConsultasPiezasNombre.pack();
+        frameConsultasPiezasNombre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameConsultasPiezasNombre.setVisible(false);
+        //codigo
+        frameConsultasPiezasCodigo.setContentPane(new ConsultaPiezasCodigo().panelConsultaPiezasCodogo);
+        frameConsultasPiezasCodigo.pack();
+        frameConsultasPiezasCodigo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
+        //descripcion
+        FrameConsultasPiezasDescripcion.setContentPane(new ConsultaPiezasDescripcion().panelConsultaPiezasDecripcion);
+        FrameConsultasPiezasDescripcion.pack();
+        FrameConsultasPiezasDescripcion.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        FrameConsultasPiezasDescripcion.setVisible(false);
     }
 }
