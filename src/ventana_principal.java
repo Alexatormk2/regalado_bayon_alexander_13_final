@@ -5,24 +5,38 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ventana_principal {
+
+    //proyectos
+    static JFrame frameListadoProyectos = new JFrame("Listado proyectos");
+    static JFrame frameGestionPoyectos = new JFrame("Gestion Proyectos");
+    static JFrame frameVentanaProyectos = new JFrame("Ventana Proyectos");
+
+
+    //proveedores
+    static JFrame frameConsultasProveedorCodigo = new JFrame("Consultas Proveedor codigo");
+    static JFrame frameConsultasProveedorNombre = new JFrame("Consultas Proveedor nombre");
+    static JFrame frameMenuConsultasProve = new JFrame("Menu Consultas");
+    static JFrame frameConsultarProveedorDireccion = new JFrame("Consultas Proveedor Direccion");
+    static JFrame frameListadoProveedores = new JFrame("Listado_Proveedores");
+    static JFrame frameProveedores = new JFrame("Ventana_Proveedores");
+    static JFrame frameGestionProvedores = new JFrame("Gestion_Proveedores");
+    //piezas
+
+    static JFrame frameMenuConsultasPiezas = new JFrame("Menu Consultas");
+
+
+    static JFrame framePiezas = new JFrame("ventana_Piezas");
+
+    static JFrame frameGestionPiezas = new JFrame("Gestion Piezas");
+    static JFrame frameListadoPiezas = new JFrame("Listado Piezas");
     static JFrame FrameConsultasPiezasDescripcion = new JFrame("Consultas Piezas Nomnbre");
     static JFrame frameConsultasPiezasCodigo = new JFrame("Consultas Piezas Codigo ");
     static JFrame frameConsultasPiezasNombre = new JFrame("Consultas Piezas Codigo");
-    static JFrame frameConsultarProveedorDireccion = new JFrame("Consultas Proveedor Direccion");
-    static JFrame frameListadoProyectos = new JFrame("Listado proyectos");
+
+
     static JFrame frameMain = new JFrame("ventana_principal");
-    static JFrame frameMenuConsultasPiezas = new JFrame("Menu Consultas");
-    static JFrame frameMenuConsultasProve = new JFrame("Menu Consultas");
-    static JFrame frameConsultasProveedorCodigo = new JFrame("Consultas Proveedor codigo");
-    static JFrame frameConsultasProveedorNombre = new JFrame("Consultas Proveedor nombre");
-    static JFrame frameListadoProveedores = new JFrame("Listado_Proveedores");
-    static JFrame frameProveedores = new JFrame("Ventana_Proveedores");
-    static JFrame framePiezas = new JFrame("ventana_Piezas");
-    static JFrame frameGestionProvedores = new JFrame("Gestion_Proveedores");
-    static JFrame frameGestionPiezas = new JFrame("Gestion Piezas");
-    static JFrame frameListadoPiezas = new JFrame("Listado Piezas");
-    static JFrame frameVentanaProyectos = new JFrame("Ventana Proyectos");
-    static JFrame frameGestionPoyectos = new JFrame("Gestion Proyectos");
+
+
     private JButton baseDeDatosButton;
     private JButton buttonProveedores;
     private JButton buttonPiezas;
