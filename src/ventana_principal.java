@@ -165,52 +165,82 @@ public class ventana_principal {
         frameMain.setContentPane(new ventana_principal().PanelMain);
         frameMain.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frameMain.pack();
+        frameMain.setResizable(false);
+        frameMain.setLocationRelativeTo(null);
+        frameMain.setSize(300, 325);
         frameMain.setVisible(true);
 //ventana proveedores
 
         frameProveedores.setContentPane(new Ventana_Proveedores().PanelProveedores);
         frameProveedores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameProveedores.pack();
+        frameProveedores.setLocationRelativeTo(null);
+        frameProveedores.setResizable(false);
+        frameProveedores.setSize(300, 325);
         frameProveedores.setVisible(false);
 //ventana piezas
         framePiezas.setContentPane(new ventana_Piezas().PanelPieza);
         framePiezas.pack();
+        framePiezas.setLocationRelativeTo(null);
+        framePiezas.setResizable(false);
         framePiezas.setVisible(false);
+        framePiezas.setSize(300, 325);
         framePiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 //gestion piezas
         frameGestionPiezas.setContentPane(new Gestion_Piezas().panelGestionPiezas);
         frameGestionPiezas.pack();
+        frameGestionPiezas.setResizable(false);
+        frameGestionPiezas.setLocationRelativeTo(null);
+        frameGestionPiezas.setSize(300, 325);
         frameGestionPiezas.setVisible(false);
         frameGestionPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         //gestion proveedores
         frameGestionProvedores.setContentPane(new Gestion_Proveedores().panelGestionProveedores);
         frameGestionProvedores.pack();
+        frameGestionProvedores.setLocationRelativeTo(null);
+        frameGestionProvedores.setResizable(false);
+        frameGestionProvedores.setSize(300, 325);
         frameGestionProvedores.setVisible(false);
         frameGestionProvedores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 //listado proveedores
         frameListadoProveedores.setContentPane(new Listado_Proveedores().PanelListadoProveedores);
         frameListadoProveedores.pack();
+        frameListadoProveedores.setLocationRelativeTo(null);
+        frameListadoProveedores.setResizable(false);
+        frameListadoProveedores.setSize(300, 325);
         frameListadoProveedores.setVisible(false);
         frameListadoProveedores.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         //lsitado piezas
         frameListadoPiezas.setContentPane(new Listado_Piezas().PanelListadoPiezas);
         frameListadoPiezas.pack();
+        frameListadoPiezas.setResizable(false);
+        frameListadoPiezas.setLocationRelativeTo(null);
+        frameListadoPiezas.setSize(300, 325);
         frameListadoPiezas.setVisible(false);
         frameListadoPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         //listado_proyectos
         frameListadoProyectos.setContentPane(new listado_proyectos().panelListaProyecto);
         frameListadoProyectos.pack();
+        frameListadoProyectos.setLocationRelativeTo(null);
+        frameListadoProyectos.setResizable(false);
+        frameListadoProyectos.setSize(300, 325);
         frameListadoProyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameListadoProyectos.setVisible(false);
         //ventana proyectos
         frameVentanaProyectos.setContentPane(new ventana_Proyectos().PanelProyectos);
         frameVentanaProyectos.pack();
+        frameVentanaProyectos.setResizable(false);
+        frameVentanaProyectos.setLocationRelativeTo(null);
+        frameVentanaProyectos.setSize(300, 3);
         frameVentanaProyectos.setVisible(false);
         frameVentanaProyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         //Proyectos gestion
         frameGestionPoyectos.setContentPane(new Gestion_proyectos().PanelGestionProyectos);
         frameGestionPoyectos.pack();
+        frameGestionPoyectos.setLocationRelativeTo(null);
+        frameGestionPoyectos.setResizable(false);
+        frameGestionProvedores.setSize(300, 325);
         frameGestionPoyectos.setVisible(false);
         frameGestionPoyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -219,21 +249,34 @@ public class ventana_principal {
         //menu
         frameMenuConsultasProve.setContentPane(new menuConsultasProveedor().panelMenuProve);
         frameMenuConsultasProve.pack();
+        frameMenuConsultasProve.setLocationRelativeTo(null);
+        frameMenuConsultasProve.setResizable(false);
+        frameMenuConsultasProve.setSize(300, 325);
         frameMenuConsultasProve.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameMenuConsultasProve.setVisible(false);
         //codigo
         frameConsultasProveedorCodigo.setContentPane(new ConsultaProveedoresCodigo().PanelConsultaProveedores);
         frameConsultasProveedorCodigo.pack();
+        frameConsultasProveedorCodigo.setLocationRelativeTo(null);
+        frameConsultasProveedorCodigo.setResizable(false);
+        frameConsultasProveedorCodigo.setSize(300, 325);
         frameConsultasProveedorCodigo.setVisible(false);
         frameConsultasProveedorCodigo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         //nombre
         frameConsultasProveedorNombre.setContentPane(new ConsultaProveedorNombre().panelConsultasNombreProveedor);
         frameConsultasProveedorNombre.pack();
+        frameConsultasProveedorNombre.setLocationRelativeTo(null);
+        frameConsultasProveedorNombre.setResizable(false);
         frameConsultasProveedorNombre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameConsultasProveedorNombre.setSize(300, 325);
         frameConsultasProveedorNombre.setVisible(false);
         //direccion
         frameConsultarProveedorDireccion.setContentPane(new ConsultaProveedorDireccion().panelConsutlarDireccionProve);
         frameConsultarProveedorDireccion.pack();
+        frameConsultarProveedorDireccion.setResizable(false);
+        frameConsultarProveedorDireccion.setLocationRelativeTo(null);
+        frameConsultarProveedorDireccion.pack();
+        frameConsultarProveedorDireccion.setSize(300, 325);
         frameConsultarProveedorDireccion.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameConsultarProveedorDireccion.setVisible(false);
 
@@ -241,21 +284,34 @@ public class ventana_principal {
         //menu
         frameMenuConsultasPiezas.setContentPane(new MenuConsultasPiezas().panelMenuPiezas);
         frameMenuConsultasPiezas.pack();
+        frameMenuConsultasPiezas.setLocationRelativeTo(null);
+        frameMenuConsultasPiezas.setResizable(false);
+        frameMenuConsultasPiezas.setSize(300, 325);
         frameMenuConsultasPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameMenuConsultasPiezas.setVisible(false);
         //nombre
         frameConsultasPiezasNombre.setContentPane(new ConsultaPiezasNombre().panelConsultaPiezasNombre);
         frameConsultasPiezasNombre.pack();
+        frameConsultasPiezasNombre.setLocationRelativeTo(null);
+        frameConsultasPiezasNombre.setResizable(false);
+        frameConsultasPiezasNombre.setSize(300, 325);
         frameConsultasPiezasNombre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameConsultasPiezasNombre.setVisible(false);
         //codigo
         frameConsultasPiezasCodigo.setContentPane(new ConsultaPiezasCodigo().panelConsultaPiezasCodogo);
         frameConsultasPiezasCodigo.pack();
+        frameConsultasPiezasCodigo.setLocationRelativeTo(null);
+        frameConsultasPiezasCodigo.setResizable(false);
+        frameConsultasPiezasCodigo.setVisible(false);
+        frameConsultasPiezasCodigo.setSize(300, 325);
         frameConsultasPiezasCodigo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         //descripcion
         FrameConsultasPiezasDescripcion.setContentPane(new ConsultaPiezasDescripcion().panelConsultaPiezasDecripcion);
         FrameConsultasPiezasDescripcion.pack();
+        FrameConsultasPiezasDescripcion.setLocationRelativeTo(null);
+        FrameConsultasPiezasDescripcion.setResizable(false);
+        FrameConsultasPiezasDescripcion.setSize(300, 325);
         FrameConsultasPiezasDescripcion.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         FrameConsultasPiezasDescripcion.setVisible(false);
     }
