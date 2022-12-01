@@ -1,4 +1,5 @@
 import org.mariadb.jdbc.Connection;
+import org.mariadb.jdbc.Statement;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -119,6 +120,44 @@ textProveedoresDireccion.setText("");
 
                     JOptionPane.showMessageDialog(null, "Exception a la hora de la conexion revisa los datos de la conexion tnato como el puerto como el usuario  ","Error",JOptionPane.ERROR_MESSAGE);
                     JOptionPane.showMessageDialog(null, ej,"Error",JOptionPane.ERROR_MESSAGE);
+
+                }
+
+            }
+        });
+        eliminarButtonProve.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Connection conexion = null;
+
+
+                PreparedStatement preparedStmt;
+                try {
+                    Class.forName("org.mariadb.jdbc.Driver");
+
+                    conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
+
+
+                    String query = "delete from  PROVEEDORES where CODIGO = ?";
+
+                    preparedStmt = conexion.prepareStatement(query);
+
+                    preparedStmt.setString(1, String.valueOf(textProveedorCodigo.getText()));
+
+
+                    preparedStmt.executeUpdate();
+                    textProveedorCodigo.setText("");
+                    textProveedoresApellido.setText("");
+                    textProveedoresDireccion.setText("");
+                    textProveedoresNombre.setText("");
+                    JOptionPane.showMessageDialog(null,"Borrado con exito","Info",JOptionPane.INFORMATION_MESSAGE);
+
+
+                } catch (ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null,ex,"Error inesperado pro favor revise el codigo ",JOptionPane.ERROR_MESSAGE);
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null,ex,"Error codigo no existente o error en la consulta o conexion revise por favor",JOptionPane.ERROR_MESSAGE);
 
                 }
 

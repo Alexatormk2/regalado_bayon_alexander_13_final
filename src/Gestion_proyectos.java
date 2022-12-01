@@ -110,5 +110,41 @@ public class Gestion_proyectos {
                 ventana_principal.frameListadoProyectos.setVisible(true);
             }
         });
+        eliminarButtonProve.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Connection conexion = null;
+
+
+                PreparedStatement preparedStmt;
+                try {
+                    Class.forName("org.mariadb.jdbc.Driver");
+
+                    conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
+
+
+                    String query = "delete from  PROYECTOS where CODIGO = ?";
+
+                    preparedStmt = conexion.prepareStatement(query);
+
+                    preparedStmt.setString(1, String.valueOf(textProyectosCodigo.getText()));
+
+
+                    preparedStmt.executeUpdate();
+                    textProyectosCodigo.setText("");
+                    textProyectosNombre.setText("");
+                    textProyectosCiudad.setText("");
+                    JOptionPane.showMessageDialog(null,"Borrado con exito","Info",JOptionPane.INFORMATION_MESSAGE);
+
+
+                } catch (ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null,ex,"Error inesperado pro favor revise el codigo ",JOptionPane.ERROR_MESSAGE);
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null,ex,"Error codigo no existente o error en la consulta o conexion revise por favor",JOptionPane.ERROR_MESSAGE);
+
+                }
+            }
+        });
     }
 }
