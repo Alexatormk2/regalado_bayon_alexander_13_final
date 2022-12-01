@@ -1,8 +1,14 @@
 import org.hibernate.resource.transaction.backend.jta.internal.JtaIsolationDelegate;
+import org.mariadb.jdbc.Connection;
+import org.mariadb.jdbc.client.result.ResultSetMetaData;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ventana_principal {
 
@@ -65,6 +71,91 @@ public class ventana_principal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameVentanaProyectos.setVisible(true);
+            }
+        });
+        baseDeDatosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ResultSet resul;
+                Connection conexion = null;
+                PreparedStatement pstmt;
+                ResultSetMetaData rsmd;
+                String name;
+                String type;
+///piezas
+                String[] listaNamePiezas = new String[5];
+                String[] listaTypePiezas = new String[5];
+                String[] listaNameProveedores = new String[5];
+                String[] listaTypeProveedores = new String[5];
+
+                String[] listaNameProyectos = new String[4];
+                String[] listaTypeProyectos = new String[4];
+                try {
+                    Class.forName("org.mariadb.jdbc.Driver");
+//piezas
+                    conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
+                    pstmt = conexion.prepareStatement("SELECT * FROM Piezas;");
+                    resul = pstmt.executeQuery();
+
+                    rsmd = (ResultSetMetaData) resul.getMetaData();
+                    int count = rsmd.getColumnCount();
+                    for (int i = 1; i <= count; i++) {
+                        name = rsmd.getColumnName(i);
+                        listaNamePiezas[i] = name;
+
+                        type = rsmd.getColumnTypeName(i);
+                        listaTypePiezas[i] = type;
+
+                        System.out.println(name + " (" + type + ")");
+
+                    }
+                    JOptionPane.showMessageDialog(null, listaNamePiezas[1] + "(" + listaTypePiezas[1] + ")" + "____" + listaNamePiezas[2] + "(" + listaTypePiezas[2] + ")" + "____" + listaNamePiezas[3] + "(" + listaTypePiezas[3] + ")" + "____" + listaNamePiezas[4] + "(" + listaTypePiezas[4] + ")", "Piezas", JOptionPane.INFORMATION_MESSAGE);
+
+//proveedores
+
+                    pstmt = conexion.prepareStatement("SELECT * FROM PROVEEDORES;");
+                    resul = pstmt.executeQuery();
+
+                    rsmd = (ResultSetMetaData) resul.getMetaData();
+                    count = rsmd.getColumnCount();
+                    for (int i = 1; i <= count; i++) {
+                        name = rsmd.getColumnName(i);
+                        listaNameProyectos[i] = name;
+
+                        type = rsmd.getColumnTypeName(i);
+                        listaTypeProyectos[i] = type;
+
+                        System.out.println(name + " (" + type + ")");
+
+                    }
+                    JOptionPane.showMessageDialog(null, listaNameProyectos[1] + "(" + listaTypeProyectos[1] + ")" + "____" + listaNameProyectos[2] + "(" + listaTypeProyectos[2] + ")" + "____" + listaNameProyectos[3] + "(" + listaTypeProyectos[3] + ")" + "____" + listaNameProyectos[4] + "(" + listaTypeProyectos[4] + ")", "Proyectos", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    pstmt = conexion.prepareStatement("SELECT * FROM PROVEEDORES;");
+                    resul = pstmt.executeQuery();
+
+                    rsmd = (ResultSetMetaData) resul.getMetaData();
+                    count = rsmd.getColumnCount();
+                    for (int i = 1; i <= count; i++) {
+                        name = rsmd.getColumnName(i);
+                        listaNameProveedores[i] = name;
+
+                        type = rsmd.getColumnTypeName(i);
+                        listaTypeProveedores[i] = type;
+
+                        System.out.println(name + " (" + type + ")");
+
+                    }
+                    JOptionPane.showMessageDialog(null, listaNameProveedores[1] + "(" + listaTypeProveedores[1] + ")" + "____" + listaNameProveedores[2] + "(" + listaTypeProveedores[2] + ")" + "____" + listaNameProveedores[3] + "(" + listaTypeProveedores[3] + ")" + "____" + listaNameProveedores[4] + "(" + listaTypeProveedores[4] + ")", "Proveedores", JOptionPane.INFORMATION_MESSAGE);
+
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
             }
         });
     }

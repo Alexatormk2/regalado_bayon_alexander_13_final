@@ -157,5 +157,16 @@ public class Gestion_Piezas {
                 }
             }
         });
+        modificarButtonProve.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+
+
+
+
+            }
+        });
     }
 }
