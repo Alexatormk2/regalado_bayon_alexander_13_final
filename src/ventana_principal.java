@@ -3,14 +3,20 @@ import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.client.result.ResultSetMetaData;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
-public class ventana_principal {
+public class ventana_principal extends JFrame {
+
+
+    //gestion
+    static JFrame frameGestion = new JFrame("Gestion Global");
 
     //proyectos
     static JFrame frameListadoProyectos = new JFrame("Listado proyectos");
@@ -51,11 +57,19 @@ public class ventana_principal {
     private JButton buttonGestionGlobal;
     private JButton buttonAyuda;
     private JPanel PanelMain;
+  private ImageIcon image1;
+  private JLabel label1;
     public static Proyectos[] ListadoProyectos = new Proyectos[100];
     public static Proveedores[] Listaproveedores = new Proveedores[100];
     public static Piezas[] ListaPiezas = new Piezas[100];
 
+
     public ventana_principal() {
+
+        setLayout(new FlowLayout( ));
+        image1 =  new ImageIcon(".imagen\\fondo.jpg");
+        label1 = new JLabel(image1);
+        add(label1);
         buttonProveedores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,9 +173,25 @@ public class ventana_principal {
 
             }
         });
+        buttonGestionGlobal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana_principal.frameGestion.setVisible(true);
+            }
+        });
     }
 
     public static void main(String[] args) {
+///gestion global
+
+        frameGestion.setContentPane(new GestionGlobalMenu().PanelGestion);
+        frameGestion.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameGestion.pack();
+        frameGestion.setResizable(false);
+        frameGestion.setLocationRelativeTo(null);
+        frameGestion.setSize(500,325);
+        frameGestion.setVisible(false);
+
 //ventana principal
         frameMain.setContentPane(new ventana_principal().PanelMain);
         frameMain.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -170,6 +200,7 @@ public class ventana_principal {
         frameMain.setLocationRelativeTo(null);
         frameMain.setSize(1000, 325);
         frameMain.setVisible(true);
+
 //ventana proveedores
 
         frameProveedores.setContentPane(new Ventana_Proveedores().PanelProveedores);
