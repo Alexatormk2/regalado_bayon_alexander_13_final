@@ -1,6 +1,9 @@
+import DB.ProyectosEntity;
+import org.hibernate.Session;
 import org.mariadb.jdbc.Connection;
 
 import javax.swing.*;
+import javax.transaction.Transaction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.DriverManager;
@@ -22,7 +25,7 @@ public class Gestion_proyectos {
     private JLabel label1;
     JPanel PanelGestionProyectos;
     private JButton buttonListadoProyectos;
-
+Session session;
     public Gestion_proyectos() {
         insertarButton.addActionListener(new ActionListener() {
             @Override
@@ -60,6 +63,7 @@ public class Gestion_proyectos {
                     } else {
                         Connection conexion = null;
 
+                        ProyectosEntity proyectosEntity = new ProyectosEntity();
                         Class.forName("org.mariadb.jdbc.Driver");
                         conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
                         PreparedStatement pstmt = conexion.prepareStatement("INSERT INTO `proyectos`(CODIGO, NOMBRE ,CIUDAD ) VALUES (?, ?, ? )");
@@ -134,19 +138,18 @@ public class Gestion_proyectos {
                     textProyectosCodigo.setText("");
                     textProyectosNombre.setText("");
                     textProyectosCiudad.setText("");
-                    JOptionPane.showMessageDialog(null,"Borrado con exito","Info",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Borrado con exito", "Info", JOptionPane.INFORMATION_MESSAGE);
                     JOptionPane.showMessageDialog(null, "Se han borrado las gestiones asociadas al dato borrado", "Info", JOptionPane.INFORMATION_MESSAGE);
 
 
                 } catch (ClassNotFoundException ex) {
-                    JOptionPane.showMessageDialog(null,"Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea","Error",JOptionPane.ERROR_MESSAGE);
-                    JOptionPane.showMessageDialog(null,ex);
-
+                    JOptionPane.showMessageDialog(null, "Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex);
 
 
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null,ex,"Error codigo no existente o error en la consulta o conexion revise por favor",JOptionPane.ERROR_MESSAGE);
-                    JOptionPane.showMessageDialog(null,ex);
+                    JOptionPane.showMessageDialog(null, ex, "Error codigo no existente o error en la consulta o conexion revise por favor", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex);
                 }
             }
         });

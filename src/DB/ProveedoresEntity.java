@@ -1,4 +1,4 @@
-package org.shen.model;
+package DB;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -8,16 +8,16 @@ import java.util.Objects;
 public class ProveedoresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "CODIGO", nullable = false, length = 6)
+    @Column(name = "CODIGO")
     private String codigo;
     @Basic
-    @Column(name = "nombre", nullable = true, length = 20)
+    @Column(name = "nombre")
     private String nombre;
     @Basic
-    @Column(name = "APELLIDO", nullable = false, length = 30)
+    @Column(name = "APELLIDO")
     private String apellido;
     @Basic
-    @Column(name = "DIRECCION", nullable = true, length = 40)
+    @Column(name = "DIRECCION")
     private String direccion;
 
     public String getCodigo() {

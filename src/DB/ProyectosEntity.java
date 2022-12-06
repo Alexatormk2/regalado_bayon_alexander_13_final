@@ -1,4 +1,4 @@
-package org;
+package DB;
 
 import javax.persistence.*;
 import java.util.Objects;
