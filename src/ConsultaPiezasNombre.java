@@ -67,8 +67,8 @@ public class ConsultaPiezasNombre {
 
 
                     } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, ex, "Error la consulta esta  mal escrita o algun dato de la conexion esta mal", JOptionPane.ERROR_MESSAGE);
-
+                        JOptionPane.showMessageDialog(null,"Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea","Error",JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,ex);
 
                     } catch (ClassNotFoundException ex) {
                         JOptionPane.showMessageDialog(null, ex, "Error  de clase, no se pudo encontrar", JOptionPane.ERROR_MESSAGE);
@@ -104,8 +104,8 @@ public class ConsultaPiezasNombre {
 
                     }
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Selecciona un dato del combo box ");
-
+                    JOptionPane.showMessageDialog(null,"Error en la conexion o en la consulta por favor revise","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,ex);
                 }
 
 

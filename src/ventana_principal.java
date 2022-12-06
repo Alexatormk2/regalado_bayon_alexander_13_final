@@ -17,6 +17,8 @@ public class ventana_principal extends JFrame {
 
     //gestion
     static JFrame frameGestion = new JFrame("Gestion Global");
+    static JFrame frameGestionListar = new JFrame("Listar Gestion");
+    static JFrame frameGestionCrear = new JFrame("Gestionar gestion");
 
     //proyectos
     static JFrame frameListadoProyectos = new JFrame("Listado proyectos");
@@ -57,17 +59,18 @@ public class ventana_principal extends JFrame {
     private JButton buttonGestionGlobal;
     private JButton buttonAyuda;
     private JPanel PanelMain;
-  private ImageIcon image1;
-  private JLabel label1;
+    private ImageIcon image1;
+    private JLabel label1;
     public static Proyectos[] ListadoProyectos = new Proyectos[100];
     public static Proveedores[] Listaproveedores = new Proveedores[100];
     public static Piezas[] ListaPiezas = new Piezas[100];
 
+    public static GestionGlobal[] ListaGestion = new GestionGlobal[100];
 
     public ventana_principal() {
 
-        setLayout(new FlowLayout( ));
-        image1 =  new ImageIcon(".imagen\\fondo.jpg");
+        setLayout(new FlowLayout());
+        image1 = new ImageIcon(".imagen\\fondo.jpg");
         label1 = new JLabel(image1);
         add(label1);
         buttonProveedores.addActionListener(new ActionListener() {
@@ -97,14 +100,15 @@ public class ventana_principal extends JFrame {
                 ResultSetMetaData rsmd;
                 String name;
                 String type;
-///piezas
+                String[] listaNameGestion = new String[6];
+                String[] listaTypeGestion = new String[6];
                 String[] listaNamePiezas = new String[5];
                 String[] listaTypePiezas = new String[5];
                 String[] listaNameProveedores = new String[5];
                 String[] listaTypeProveedores = new String[5];
 
-                String[] listaNameProyectos = new String[4];
-                String[] listaTypeProyectos = new String[4];
+                String[] listaNameProyectos = new String[5];
+                String[] listaTypeProyectos = new String[5];
                 try {
                     Class.forName("org.mariadb.jdbc.Driver");
 //piezas
@@ -116,14 +120,20 @@ public class ventana_principal extends JFrame {
                     int count = rsmd.getColumnCount();
                     for (int i = 1; i <= count; i++) {
                         name = rsmd.getColumnName(i);
-                        listaNamePiezas[i] = name;
+
+
+                        if (name ==null  || name =="") {
+                            break;
+
+                        }else {
+                            listaNamePiezas[i] = name;
 
                         type = rsmd.getColumnTypeName(i);
                         listaTypePiezas[i] = type;
 
                         System.out.println(name + " (" + type + ")");
 
-                    }
+                    }}
                     JOptionPane.showMessageDialog(null, listaNamePiezas[1] + "(" + listaTypePiezas[1] + ")" + "____" + listaNamePiezas[2] + "(" + listaTypePiezas[2] + ")" + "____" + listaNamePiezas[3] + "(" + listaTypePiezas[3] + ")" + "____" + listaNamePiezas[4] + "(" + listaTypePiezas[4] + ")", "Piezas", JOptionPane.INFORMATION_MESSAGE);
 
 //proveedores
@@ -134,7 +144,12 @@ public class ventana_principal extends JFrame {
                     rsmd = (ResultSetMetaData) resul.getMetaData();
                     count = rsmd.getColumnCount();
                     for (int i = 1; i <= count; i++) {
+
                         name = rsmd.getColumnName(i);
+                        if (name ==null  || name =="") {
+                            break;
+
+                        }else {
                         listaNameProyectos[i] = name;
 
                         type = rsmd.getColumnTypeName(i);
@@ -142,7 +157,7 @@ public class ventana_principal extends JFrame {
 
                         System.out.println(name + " (" + type + ")");
 
-                    }
+                    }}
                     JOptionPane.showMessageDialog(null, listaNameProyectos[1] + "(" + listaTypeProyectos[1] + ")" + "____" + listaNameProyectos[2] + "(" + listaTypeProyectos[2] + ")" + "____" + listaNameProyectos[3] + "(" + listaTypeProyectos[3] + ")" + "____" + listaNameProyectos[4] + "(" + listaTypeProyectos[4] + ")", "Proyectos", JOptionPane.INFORMATION_MESSAGE);
 
 
@@ -164,10 +179,37 @@ public class ventana_principal extends JFrame {
                     JOptionPane.showMessageDialog(null, listaNameProveedores[1] + "(" + listaTypeProveedores[1] + ")" + "____" + listaNameProveedores[2] + "(" + listaTypeProveedores[2] + ")" + "____" + listaNameProveedores[3] + "(" + listaTypeProveedores[3] + ")" + "____" + listaNameProveedores[4] + "(" + listaTypeProveedores[4] + ")", "Proveedores", JOptionPane.INFORMATION_MESSAGE);
 
 
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                    //Gestion:
+                    pstmt = conexion.prepareStatement("SELECT * FROM Gestion;");
+                    resul = pstmt.executeQuery();
+
+                    rsmd = (ResultSetMetaData) resul.getMetaData();
+                    count = rsmd.getColumnCount();
+                    for (int i = 1; i <= count; i++) {
+                        name = rsmd.getColumnName(i);
+
+                        if (name ==null  || name =="") {
+                            break;
+
+                        }else {
+                            listaNameGestion[i] = name;
+
+                            type = rsmd.getColumnTypeName(i);
+                            listaTypeGestion[i] = type;
+
+                            System.out.println(name + " (" + type + ")");
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null, listaNameGestion[1] + "(" + listaTypeGestion[1] + ")" + "____" + listaNameGestion[2] + "(" + listaTypeGestion[2] + ")" + "____" + listaNameGestion[3] + "(" + listaTypeGestion[3] + ")" + "____" + listaNameGestion[4] + "(" + listaTypeGestion[4] + ")", "Gestion", JOptionPane.INFORMATION_MESSAGE);
+
+
                 } catch (ClassNotFoundException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(null, "Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex);
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error en la conexion o en la consulta por favor revise", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex);
                 }
 
 
@@ -177,6 +219,12 @@ public class ventana_principal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana_principal.frameGestion.setVisible(true);
+            }
+        });
+        buttonAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Creado por Alexander Regalado Bayon durante el curso de Programacion Multiplataforma", "Author", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
@@ -189,8 +237,24 @@ public class ventana_principal extends JFrame {
         frameGestion.pack();
         frameGestion.setResizable(false);
         frameGestion.setLocationRelativeTo(null);
-        frameGestion.setSize(500,325);
+        frameGestion.setSize(500, 325);
         frameGestion.setVisible(false);
+        //gestionar gestionGlobal
+        frameGestionCrear.setContentPane(new GestionGlobalCrear().CrearGestion);
+        frameGestionCrear.setVisible(false);
+        frameGestionCrear.pack();
+        frameGestionCrear.setResizable(false);
+        frameGestionCrear.setLocationRelativeTo(null);
+        frameGestionCrear.setSize(850, 600);
+
+
+        //listar gestion
+        frameGestionListar.setContentPane(new GestionGlobalListar().ListarGLobar);
+        frameGestionListar.pack();
+        frameGestionListar.setResizable(false);
+        frameGestionListar.setLocationRelativeTo(null);
+        frameGestionListar.setSize(720, 420);
+        frameGestionListar.setVisible(false);
 
 //ventana principal
         frameMain.setContentPane(new ventana_principal().PanelMain);
@@ -272,7 +336,7 @@ public class ventana_principal extends JFrame {
         frameVentanaProyectos.pack();
         frameVentanaProyectos.setResizable(false);
         frameVentanaProyectos.setLocationRelativeTo(null);
-        frameVentanaProyectos.setSize(700, 3);
+        frameVentanaProyectos.setSize(700, 325);
         frameVentanaProyectos.setVisible(false);
         frameVentanaProyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         //Proyectos gestion

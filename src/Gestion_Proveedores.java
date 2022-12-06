@@ -148,14 +148,16 @@ public class Gestion_Proveedores {
                     textProveedoresDireccion.setText("");
                     textProveedoresNombre.setText("");
                     JOptionPane.showMessageDialog(null, "Borrado con exito", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se han borrado las gestiones asociadas al dato borrado", "Info", JOptionPane.INFORMATION_MESSAGE);
 
 
                 } catch (ClassNotFoundException ex) {
-                    JOptionPane.showMessageDialog(null, ex, "Error inesperado pro favor revise el codigo ", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,ex);
 
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex, "Error codigo no existente o error en la consulta o conexion revise por favor", JOptionPane.ERROR_MESSAGE);
-
+                    JOptionPane.showMessageDialog(null,ex);
                 }
 
             }

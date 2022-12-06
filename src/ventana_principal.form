@@ -26,7 +26,7 @@
           <component id="a60e2" class="javax.swing.JButton" binding="buttonProveedores">
             <constraints/>
             <properties>
-              <text value="Ventana_Proveedores"/>
+              <text value="Proveedores"/>
             </properties>
           </component>
           <component id="5d2a2" class="javax.swing.JButton" binding="buttonPiezas">

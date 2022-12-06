@@ -63,9 +63,12 @@ public class Listado_Proveedores {
 
 
                 } catch (ClassNotFoundException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(null,"Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,ex);
+
                 } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(null,"Error en la conexion o en la consulta por favor revise","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,ex);
                 }
 
 

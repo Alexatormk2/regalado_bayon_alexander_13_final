@@ -8,21 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConsultaPiezasCodigo {
-     JPanel panelConsultaPiezasCodogo;
+    JPanel panelConsultaPiezasCodogo;
     private JButton buttonBuscar;
     private JTextField textBuscarCodigoProveedor;
     private JTextField textNombre;
     private JTextField textPrecio;
-    private JComboBox comboProveedorCodigo;
+    private JComboBox<String> comboPiezarCodigo;
     private JTextField textCodigo;
     private JTextField textDescripcion;
-
-
-
-
-
-
-
 
 
     String codigo;
@@ -42,8 +35,8 @@ public class ConsultaPiezasCodigo {
                 textNombre.setText("");
                 textDescripcion.setText("");
                 Connection conexion = null;
-                if (comboProveedorCodigo != null) {
-                    comboProveedorCodigo.removeAllItems();
+                if (comboPiezarCodigo != null) {
+                    comboPiezarCodigo.removeAllItems();
 
 
                 }
@@ -64,7 +57,7 @@ public class ConsultaPiezasCodigo {
                         while (pstmt.getResultSet().next()) {
 
 
-                            comboProveedorCodigo.addItem(pstmt.getResultSet().getString(1));
+                            comboPiezarCodigo.addItem(pstmt.getResultSet().getString(1));
                             Piezas pieza = new Piezas(pstmt.getResultSet().getString(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getDouble(3), pstmt.getResultSet().getString(4));
                             ListaConsultasPieza[contador] = pieza;
 
@@ -74,12 +67,12 @@ public class ConsultaPiezasCodigo {
 
 
                     } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, ex, "Error la consulta esta  mal escrita o algun dato de la conexion esta mal", JOptionPane.ERROR_MESSAGE);
-
+                        JOptionPane.showMessageDialog(null, "Error en la conexion o en la consulta por favor revise", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, ex);
 
                     } catch (ClassNotFoundException ex) {
-                        JOptionPane.showMessageDialog(null, ex, "Error  de clase, no se pudo encontrar", JOptionPane.ERROR_MESSAGE);
-
+                        JOptionPane.showMessageDialog(null, "Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, ex);
                     } catch (Exception ea) {
                         JOptionPane.showMessageDialog(null, ea, "Error  datos vacios", JOptionPane.ERROR_MESSAGE);
 
@@ -90,24 +83,24 @@ public class ConsultaPiezasCodigo {
 
             }
         });
-        comboProveedorCodigo.addActionListener(new ActionListener() {
+        comboPiezarCodigo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (comboProveedorCodigo == null) {
+                    if (comboPiezarCodigo == null) {
                         System.out.println(" combo igual a null");
 
                     } else {
-                        if (comboProveedorCodigo.getSelectedIndex() < 0) {
+                        if (comboPiezarCodigo.getSelectedIndex() < 0) {
 
                             System.out.println(" combo igual a 0");
                         }
-                        codigoVer = String.valueOf(comboProveedorCodigo.getSelectedItem());
+                        codigoVer = String.valueOf(comboPiezarCodigo.getSelectedItem());
 
-                        textCodigo.setText(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].codigo);
-                        textDescripcion.setText(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].descrpcion);
-                        textNombre.setText(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].Nombre);
-                        textPrecio.setText(String.valueOf(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].precio));
+                        textCodigo.setText(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].codigo);
+                        textDescripcion.setText(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].descrpcion);
+                        textNombre.setText(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].Nombre);
+                        textPrecio.setText(String.valueOf(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].precio));
 
                     }
                 } catch (Exception ex) {
@@ -119,4 +112,5 @@ public class ConsultaPiezasCodigo {
             }
         });
 
-    }    }
+    }
+}
