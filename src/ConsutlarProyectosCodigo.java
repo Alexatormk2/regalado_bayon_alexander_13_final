@@ -15,7 +15,7 @@ public class ConsutlarProyectosCodigo {
     private JComboBox comboProyectosCodigo;
     private JTextField textCodigo;
     JPanel PanelProyectosCoigo;
-    String codigo;
+    int codigo;
     String codigoVer;
     int contador = 0;
     Proyectos[] ListaConsultasProyecto = new Proyectos[100];
@@ -33,8 +33,8 @@ public class ConsutlarProyectosCodigo {
 
 
                 }
-                codigo = textBuscar.getText().toUpperCase();
-                if (codigo.equals("")) {
+                codigo = Integer.parseInt(textBuscar.getText().toUpperCase());
+                if (codigo == Integer.parseInt("")) {
                     JOptionPane.showMessageDialog(null, "Error  datos vacios");
 
 
@@ -45,13 +45,13 @@ public class ConsutlarProyectosCodigo {
 
                         conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
                         PreparedStatement pstmt = conexion.prepareStatement("SELECT  * FROM Prpyectos WHERE upper( codigo) like ? ");
-                        pstmt.setString(1, "%" + codigo + "%");
+                        pstmt.setInt(1, Integer.parseInt("%" + codigo + "%"));
                         pstmt.executeQuery();
                         while (pstmt.getResultSet().next()) {
 
 
-                            comboProyectosCodigo.addItem(pstmt.getResultSet().getString(1));
-                            Proyectos proyectos = new Proyectos(pstmt.getResultSet().getString(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3));
+                            comboProyectosCodigo.addItem(pstmt.getResultSet().getInt(1));
+                            Proyectos proyectos = new Proyectos(pstmt.getResultSet().getInt(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3));
                             ListaConsultasProyecto[contador] = proyectos;
 
                             contador++;
@@ -88,7 +88,7 @@ public class ConsutlarProyectosCodigo {
                         }
                         codigoVer = String.valueOf(comboProyectosCodigo.getSelectedItem());
 
-                        textCodigo.setText(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].codigo);
+                        textCodigo.setText(String.valueOf(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].codigo));
                         textCiudad.setText(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].ciudad);
                         textNombre.setText(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].nombre);
 

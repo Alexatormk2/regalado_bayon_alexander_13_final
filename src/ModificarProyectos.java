@@ -1,3 +1,9 @@
+import DB.ProveedoresEntity;
+import DB.ProyectosEntity;
+import hibernate.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.Statement;
 import org.mariadb.jdbc.client.result.ResultSetMetaData;
@@ -12,13 +18,15 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class ModificarProyectos {
-   JPanel PanelModificarProyectos;
+    JPanel PanelModificarProyectos;
     private JButton guardarProve;
     private JTextField textDatoEditado;
     private JComboBox comboCodigoEdit;
     private JComboBox comboCampo;
     private JButton buttonCargarDatos;
-static  String codigoVer;
+    private JButton guardarHibernateButton;
+    static String codigoVer;
+
     public ModificarProyectos() {
         guardarProve.addActionListener(new ActionListener() {
             @Override
@@ -153,6 +161,53 @@ static  String codigoVer;
 
                 }
 
+            }
+        });
+        guardarHibernateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int codigo;
+                int input;
+                String dato;
+                String datoNuevo;
+
+                Session session = HibernateUtil.sessionFactory.openSession();
+                Transaction tx = session.beginTransaction();
+                ProyectosEntity proyectos = new ProyectosEntity();
+                try {
+
+
+                    input = Integer.parseInt(Objects.requireNonNull(comboCodigoEdit.getSelectedItem()).toString());
+                    proyectos = session.load(ProyectosEntity.class, input);
+
+                    System.out.println(input);
+                    dato = Objects.requireNonNull(comboCampo.getSelectedItem()).toString();
+                    System.out.println(dato);
+
+
+                    datoNuevo = String.valueOf((textDatoEditado.getText()));
+                    if (comboCampo.getSelectedItem().equals("Nombre")) {
+
+
+                        proyectos.setNombre(datoNuevo);
+
+
+                    } else if (comboCampo.getSelectedItem().equals("Ciudad")) {
+                        proyectos.setCiudad(datoNuevo);
+
+                    }
+
+                    session.update(proyectos);
+                    tx.commit();
+                    JOptionPane.showMessageDialog(null, "Modificado con exito", "OK", JOptionPane.ERROR_MESSAGE);
+
+
+                } catch (ConstraintViolationException de) {
+                    JOptionPane.showMessageDialog(null, "Duplicado detectado", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, de.getMessage());
+                    JOptionPane.showMessageDialog(null, de.getErrorCode());
+                    JOptionPane.showMessageDialog(null, de.getSQLException().getMessage());
+                }
             }
         });
     }

@@ -60,7 +60,7 @@ public class ConsultaPiezasDescripcion {
 
 
                             comboProveedorCodigo.addItem(pstmt.getResultSet().getString(1));
-                            Piezas pieza = new Piezas(pstmt.getResultSet().getString(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getDouble(3), pstmt.getResultSet().getString(4));
+                            Piezas pieza = new Piezas(pstmt.getResultSet().getInt(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getDouble(3), pstmt.getResultSet().getString(4));
                             ListaConsultasPieza[contador] = pieza;
 
                             contador++;
@@ -98,7 +98,7 @@ public class ConsultaPiezasDescripcion {
                         }
                         codigoVer = String.valueOf(comboProveedorCodigo.getSelectedItem());
 
-                        textCodigo.setText(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].codigo);
+                        textCodigo.setText(String.valueOf(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].codigo));
                         textDescripcion.setText(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].descrpcion);
                         textNombre.setText(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].Nombre);
                         textPrecio.setText(String.valueOf(ListaConsultasPieza[comboProveedorCodigo.getSelectedIndex()].precio));

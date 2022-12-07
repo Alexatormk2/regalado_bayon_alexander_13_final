@@ -1,3 +1,8 @@
+import DB.PiezasEntity;
+import hibernate.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.Statement;
 import org.mariadb.jdbc.client.result.ResultSetMetaData;
@@ -18,6 +23,7 @@ public class ModificarPiezas {
     private JComboBox comboCodigoEdit;
     private JComboBox comboCampo;
     private JButton buttonCargarDatos;
+    private JButton guardarHibernateButton;
     static String codigoVer;
 
     public ModificarPiezas() {
@@ -38,6 +44,7 @@ public class ModificarPiezas {
 
                     conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
                     double precio;
+                    int codigo;
                     Statement sentencia = conexion.createStatement();
                     ResultSet resul;
                     String input;
@@ -58,20 +65,20 @@ public class ModificarPiezas {
 
                         precio = Double.parseDouble(textDatoEditado.getText());
                         resul2 = sentencia.execute("UPDATE  Piezas SET " + dato + " = \"" + precio + "\" WHERE CODIGO = \"" + input + "\";");
+                    } else {
+
+                        input = Objects.requireNonNull(comboCodigoEdit.getSelectedItem()).toString();
+
+                        System.out.println(input);
+                        dato = Objects.requireNonNull(comboCampo.getSelectedItem()).toString();
+                        System.out.println(dato);
+                        datoNuevo = textDatoEditado.getText();
+
+
+                        resul2 = sentencia.execute("UPDATE  Piezas SET " + dato + " = \"" + datoNuevo + "\" WHERE CODIGO = \"" + input + "\";");
+                        JOptionPane.showMessageDialog(null, "Se editaron los datos", "OK", JOptionPane.INFORMATION_MESSAGE);
+                        ventana_principal.modificarProve.setVisible(false);
                     }
-
-                    input = Objects.requireNonNull(comboCodigoEdit.getSelectedItem()).toString();
-
-                    System.out.println(input);
-                    dato = Objects.requireNonNull(comboCampo.getSelectedItem()).toString();
-                    System.out.println(dato);
-                    datoNuevo = textDatoEditado.getText();
-
-
-                    resul2 = sentencia.execute("UPDATE  Piezas SET " + dato + " = \"" + datoNuevo + "\" WHERE CODIGO = \"" + input + "\";");
-                    JOptionPane.showMessageDialog(null, "Se editaron los datos", "OK", JOptionPane.INFORMATION_MESSAGE);
-                    ventana_principal.modificarProve.setVisible(false);
-
                 } catch (ClassNotFoundException ex) {
                     JOptionPane.showMessageDialog(null, "Error el el codigo en la clase por favor revise", "Error", JOptionPane.ERROR_MESSAGE);
                 } catch (SQLException ex) {
@@ -152,6 +159,7 @@ public class ModificarPiezas {
                     while (pstmt.getResultSet().next()) {
                         comboCodigoEdit.addItem(pstmt.getResultSet().getString(1));
 
+
                     }
 
 
@@ -168,6 +176,77 @@ public class ModificarPiezas {
 
                 }
 
+            }
+        });
+        guardarHibernateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double precio;
+                int codigo;
+
+                ResultSet resul;
+                int input;
+                String dato;
+                String datoNuevo;
+                boolean resul2;
+                String name;
+                String type;
+                Session session = HibernateUtil.sessionFactory.openSession();
+                Transaction tx = session.beginTransaction();
+                PiezasEntity piezas = new PiezasEntity();
+                try {
+
+
+                    if (comboCampo.getSelectedItem().equals("Precio")) {
+                        input = Integer.parseInt(Objects.requireNonNull(comboCodigoEdit.getSelectedItem()).toString());
+                        piezas = session.load(PiezasEntity.class,  input);
+
+                        System.out.println(input);
+                        dato = Objects.requireNonNull(comboCampo.getSelectedItem()).toString();
+                        System.out.println(dato);
+
+
+                        precio = Double.parseDouble(textDatoEditado.getText());
+
+                        piezas.setPrecio(precio);
+
+
+                        session.update(piezas);
+                        tx.commit();
+                        JOptionPane.showMessageDialog(null,  "Modificado con exito","OK", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        input = Integer.parseInt(Objects.requireNonNull(comboCodigoEdit.getSelectedItem()).toString());
+                        piezas = session.load(PiezasEntity.class,  input);
+
+                        System.out.println(input);
+                        dato = Objects.requireNonNull(comboCampo.getSelectedItem()).toString();
+                        System.out.println(dato);
+
+
+                        datoNuevo = String.valueOf((textDatoEditado.getText()));
+                        if (comboCampo.getSelectedItem().equals("Nombre")) {
+
+
+                            piezas.setNombre(datoNuevo);
+
+
+                        } else if (comboCampo.getSelectedItem().equals("Descripcion")) {
+                            piezas.setDescripcion(datoNuevo);
+
+                        }
+
+
+                        session.update(piezas);
+                        tx.commit();
+                        JOptionPane.showMessageDialog(null,  "Modificado con exito","OK", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                } catch (ConstraintViolationException de) {
+                    JOptionPane.showMessageDialog(null, "Duplicado detectado", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, de.getMessage());
+                    JOptionPane.showMessageDialog(null, de.getErrorCode());
+                    JOptionPane.showMessageDialog(null, de.getSQLException().getMessage());
+                }
             }
         });
     }

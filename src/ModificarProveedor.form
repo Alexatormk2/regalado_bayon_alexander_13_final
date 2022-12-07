@@ -31,6 +31,12 @@
                   <text value="Guardar"/>
                 </properties>
               </component>
+              <component id="308b7" class="javax.swing.JButton" binding="guardarHibernateButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Guardar(Hibernate)"/>
+                </properties>
+              </component>
             </children>
           </toolbar>
           <vspacer id="46c28">

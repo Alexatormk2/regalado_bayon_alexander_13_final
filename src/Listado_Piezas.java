@@ -41,8 +41,8 @@ public class Listado_Piezas {
                     Statement sentencia = conexion.createStatement();
                     ResultSet resul = sentencia.executeQuery("SELECT * FROM PIEZAS;");
                     while (resul.next()) {
-                        System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ", Precio: " + resul.getDouble(3) + ",Descripcion: " + resul.getString(4));
-                        Piezas piezas = new Piezas(resul.getString(1), resul.getString(2), resul.getDouble(3), resul.getString(4));
+                        System.out.println("- CODIGO: " + resul.getInt(1) + ", Nombre: " + resul.getString(2) + ", Precio: " + resul.getDouble(3) + ",Descripcion: " + resul.getString(4));
+                        Piezas piezas = new Piezas(resul.getInt(1), resul.getString(2), resul.getDouble(3), resul.getString(4));
 
                         ventana_principal.ListaPiezas[contador] = piezas;
                         contador++;
@@ -54,7 +54,7 @@ public class Listado_Piezas {
                     textRegistrosNumber.setText("0");
                     textMaxREG.setText(String.valueOf(contador - 1));
                     valorBuscador = 0;
-                    textCodigoPiezas.setText(ventana_principal.ListaPiezas[0].codigo);
+                    textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaPiezas[0].codigo));
                     textDescripcion.setText(ventana_principal.ListaPiezas[0].descrpcion);
                     textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[0].precio));
                     textNombre.setText(ventana_principal.ListaPiezas[0].Nombre);
@@ -85,7 +85,7 @@ public class Listado_Piezas {
                         valorBuscador++;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].codigo));
                         textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
                         textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
                         textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);
@@ -118,7 +118,7 @@ public class Listado_Piezas {
                         valorBuscador = contador-1;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].codigo));
                         textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
                         textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
                         textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);
@@ -152,7 +152,7 @@ public class Listado_Piezas {
                         valorBuscador--;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].codigo));
                         textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
                         textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
                         textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);
@@ -186,7 +186,7 @@ public class Listado_Piezas {
                         valorBuscador =0;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoPiezas.setText(ventana_principal.ListaPiezas[valorBuscador].codigo);
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].codigo));
                         textDescripcion.setText(ventana_principal.ListaPiezas[valorBuscador].descrpcion);
                         textPrecio.setText(String.valueOf(ventana_principal.ListaPiezas[valorBuscador].precio));
                         textNombre.setText(ventana_principal.ListaPiezas[valorBuscador].Nombre);

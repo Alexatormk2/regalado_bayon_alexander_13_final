@@ -27,5 +27,6 @@ public class menuConsultasProveedor {
                 ventana_principal.frameConsultarProveedorDireccion.setVisible(true);
             }
         });
+
     }
 }

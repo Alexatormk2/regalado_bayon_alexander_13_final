@@ -4,8 +4,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class hibernateUtil {
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+public  class HibernateUtil {
+    public static SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
         try {

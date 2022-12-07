@@ -21,9 +21,14 @@ public class ventana_principal extends JFrame {
     static JFrame frameGestionCrear = new JFrame("Gestionar gestion");
 
     //proyectos
+    static JFrame frameProyectosCodigo = new JFrame("Consultar codigo");
+    static JFrame frameProyectosCiudad = new JFrame("Consultar codigo");
+    static JFrame frameProyectosNombre = new JFrame("Consultar codigo");
+    static JFrame frameMenuConsultasProyectos = new JFrame("Menu consultas");
     static JFrame frameListadoProyectos = new JFrame("Listado proyectos");
     static JFrame frameGestionPoyectos = new JFrame("Gestion Proyectos");
     static JFrame frameVentanaProyectos = new JFrame("Ventana Proyectos");
+    static JFrame frameModificarProyectos = new JFrame("Modificar Proyectos");
 
 
     //proveedores
@@ -36,7 +41,8 @@ public class ventana_principal extends JFrame {
     static JFrame frameGestionProvedores = new JFrame("Gestion_Proveedores");
     static JFrame modificarProve = new JFrame("Modificar prove");
     //piezas
-
+//piezas
+    static JFrame frameModificarPiezas = new JFrame("Modificar piezas");
     static JFrame frameMenuConsultasPiezas = new JFrame("Menu Consultas");
 
 
@@ -122,18 +128,19 @@ public class ventana_principal extends JFrame {
                         name = rsmd.getColumnName(i);
 
 
-                        if (name ==null  || name =="") {
+                        if (name == null || name == "") {
                             break;
 
-                        }else {
+                        } else {
                             listaNamePiezas[i] = name;
 
-                        type = rsmd.getColumnTypeName(i);
-                        listaTypePiezas[i] = type;
+                            type = rsmd.getColumnTypeName(i);
+                            listaTypePiezas[i] = type;
 
-                        System.out.println(name + " (" + type + ")");
+                            System.out.println(name + " (" + type + ")");
 
-                    }}
+                        }
+                    }
                     JOptionPane.showMessageDialog(null, listaNamePiezas[1] + "(" + listaTypePiezas[1] + ")" + "____" + listaNamePiezas[2] + "(" + listaTypePiezas[2] + ")" + "____" + listaNamePiezas[3] + "(" + listaTypePiezas[3] + ")" + "____" + listaNamePiezas[4] + "(" + listaTypePiezas[4] + ")", "Piezas", JOptionPane.INFORMATION_MESSAGE);
 
 //proveedores
@@ -146,18 +153,19 @@ public class ventana_principal extends JFrame {
                     for (int i = 1; i <= count; i++) {
 
                         name = rsmd.getColumnName(i);
-                        if (name ==null  || name =="") {
+                        if (name == null || name == "") {
                             break;
 
-                        }else {
-                        listaNameProyectos[i] = name;
+                        } else {
+                            listaNameProyectos[i] = name;
 
-                        type = rsmd.getColumnTypeName(i);
-                        listaTypeProyectos[i] = type;
+                            type = rsmd.getColumnTypeName(i);
+                            listaTypeProyectos[i] = type;
 
-                        System.out.println(name + " (" + type + ")");
+                            System.out.println(name + " (" + type + ")");
 
-                    }}
+                        }
+                    }
                     JOptionPane.showMessageDialog(null, listaNameProyectos[1] + "(" + listaTypeProyectos[1] + ")" + "____" + listaNameProyectos[2] + "(" + listaTypeProyectos[2] + ")" + "____" + listaNameProyectos[3] + "(" + listaTypeProyectos[3] + ")" + "____" + listaNameProyectos[4] + "(" + listaTypeProyectos[4] + ")", "Proyectos", JOptionPane.INFORMATION_MESSAGE);
 
 
@@ -188,10 +196,10 @@ public class ventana_principal extends JFrame {
                     for (int i = 1; i <= count; i++) {
                         name = rsmd.getColumnName(i);
 
-                        if (name ==null  || name =="") {
+                        if (name == null || name == "") {
                             break;
 
-                        }else {
+                        } else {
                             listaNameGestion[i] = name;
 
                             type = rsmd.getColumnTypeName(i);
@@ -247,7 +255,7 @@ public class ventana_principal extends JFrame {
         frameGestionCrear.setLocationRelativeTo(null);
         frameGestionCrear.setSize(850, 600);
 
-
+        frameGestionCrear.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         //listar gestion
         frameGestionListar.setContentPane(new GestionGlobalListar().ListarGLobar);
         frameGestionListar.pack();
@@ -255,6 +263,15 @@ public class ventana_principal extends JFrame {
         frameGestionListar.setLocationRelativeTo(null);
         frameGestionListar.setSize(720, 420);
         frameGestionListar.setVisible(false);
+        frameGestionListar.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+//modificar proyectos
+        frameModificarProyectos.setContentPane(new ModificarProyectos().PanelModificarProyectos);
+        frameModificarProyectos.pack();
+        frameModificarProyectos.setResizable(false);
+        frameModificarProyectos.setSize(720, 302);
+        frameModificarProyectos.setVisible(false);
+        frameModificarProyectos.setLocationRelativeTo(null);
+        frameModificarProyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 //ventana principal
         frameMain.setContentPane(new ventana_principal().PanelMain);
@@ -282,6 +299,14 @@ public class ventana_principal extends JFrame {
         framePiezas.setVisible(false);
         framePiezas.setSize(700, 325);
         framePiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        //modificar piezas
+        frameModificarPiezas.setContentPane(new ModificarPiezas().PanelModificarPiezas);
+        frameModificarPiezas.pack();
+        frameModificarPiezas.setSize(600, 320);
+        frameModificarPiezas.setVisible(false);
+        frameModificarPiezas.setResizable(false);
+        frameModificarPiezas.setLocationRelativeTo(null);
+        frameModificarPiezas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 //gestion piezas
         frameGestionPiezas.setContentPane(new Gestion_Piezas().panelGestionPiezas);
         frameGestionPiezas.pack();
@@ -383,6 +408,42 @@ public class ventana_principal extends JFrame {
         frameConsultarProveedorDireccion.setSize(700, 325);
         frameConsultarProveedorDireccion.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frameConsultarProveedorDireccion.setVisible(false);
+//consultas proyectos
+//menu
+        frameMenuConsultasProyectos.setContentPane(new MenuConsultasProyectos().panelMenuProyectos);
+        frameMenuConsultasProyectos.pack();
+        frameMenuConsultasProyectos.setVisible(false);
+        frameMenuConsultasProyectos.setSize(720, 302);
+        frameMenuConsultasProyectos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameMenuConsultasProyectos.setLocationRelativeTo(null);
+        frameMenuConsultasProyectos.setResizable(false);
+        //nombre
+        frameProyectosNombre.setContentPane(new ConsultarNombreProyecto().PanelConsultarProyectosNombre);
+        frameProyectosNombre.setSize(720, 302);
+        frameProyectosNombre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameProyectosNombre.setVisible(false);
+        frameProyectosNombre.pack();
+        frameProyectosNombre.setLocationRelativeTo(null);
+        frameProyectosNombre.setResizable(false);
+
+        //codigo
+        frameProyectosCodigo.setContentPane(new ConsutlarProyectosCodigo().PanelProyectosCoigo);
+        frameProyectosCodigo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameProyectosCodigo.setSize(720, 320);
+        frameProyectosCodigo.pack();
+        frameProyectosCodigo.setVisible(false);
+        frameProyectosCodigo.setLocationRelativeTo(null);
+        frameProyectosCodigo.setResizable(false);
+
+        //ciudad
+        frameProyectosCiudad.setContentPane(new ConsultarProyectoCiudad().PanelCiudadProyecto);
+        frameProyectosCiudad.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frameProyectosCiudad.pack();
+        frameProyectosCiudad.setVisible(false);
+        frameProyectosCiudad.setSize(720, 320);
+        frameProyectosCiudad.setResizable(false);
+        frameProyectosCiudad.setLocationRelativeTo(null);
+
 
         //consulta piezas
         //menu

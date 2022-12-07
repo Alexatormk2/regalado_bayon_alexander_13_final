@@ -45,7 +45,7 @@ public class Listado_Proveedores {
                     while (resul.next()) {
                         //EMPLEADOS:	1-DNI VARCHAR, 2-NOMBRE VARCHAR, 3-APELLIDO VARCHAR, 4-FECHA_NACIMIENTO VARCHAR, 5-FECHA_CONTRATACION VARCHAR, 6-NACIONALIDAD VARCHAR, 7-CARGO VARCHAR, 8-AGENCIA VARCHAR
                         System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ", Apellido: " + resul.getString(3) + ",Direccion: " + resul.getString(4));
-                        Proveedores proveedores1 = new Proveedores(resul.getString(1), resul.getString(2), resul.getString(3), resul.getString(4));
+                        Proveedores proveedores1 = new Proveedores(resul.getInt(1), resul.getString(2), resul.getString(3), resul.getString(4));
                         ventana_principal.Listaproveedores[contador] = proveedores1;
                         contador++;
                         if (contador == 100) {
@@ -56,7 +56,7 @@ public class Listado_Proveedores {
                     textRegistrosNumber.setText("0");
                     textMaxREG.setText(String.valueOf(contador - 1));
                     valorBuscador = 0;
-                    textCodigoProveedor.setText(ventana_principal.Listaproveedores[0].codigo);
+                    textCodigoProveedor.setText(String.valueOf(ventana_principal.Listaproveedores[0].codigo));
                     textDireccion.setText(ventana_principal.Listaproveedores[0].direccion);
                     textApellidos.setText(ventana_principal.Listaproveedores[0].apellido);
                     textNombre.setText(ventana_principal.Listaproveedores[0].nombre);
@@ -86,7 +86,7 @@ public class Listado_Proveedores {
                         valorBuscador++;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
+                        textCodigoProveedor.setText(String.valueOf(ventana_principal.Listaproveedores[valorBuscador].codigo));
                         textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
                         textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
                         textNombre.setText(ventana_principal.Listaproveedores[valorBuscador].nombre);
@@ -116,7 +116,7 @@ public class Listado_Proveedores {
                         valorBuscador--;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
+                        textCodigoProveedor.setText(String.valueOf(ventana_principal.Listaproveedores[valorBuscador].codigo));
                         textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
                         textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
                         textNombre.setText(ventana_principal.Listaproveedores[valorBuscador].nombre);
@@ -144,7 +144,7 @@ public class Listado_Proveedores {
                         valorBuscador = contador - 1;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
+                        textCodigoProveedor.setText(String.valueOf(ventana_principal.Listaproveedores[valorBuscador].codigo));
                         textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
                         textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
                         textNombre.setText(ventana_principal.Listaproveedores[valorBuscador].nombre);
@@ -174,7 +174,7 @@ public class Listado_Proveedores {
                         valorBuscador = 0;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProveedor.setText(ventana_principal.Listaproveedores[valorBuscador].codigo);
+                        textCodigoProveedor.setText(String.valueOf(ventana_principal.Listaproveedores[valorBuscador].codigo));
                         textDireccion.setText(ventana_principal.Listaproveedores[valorBuscador].direccion);
                         textApellidos.setText(ventana_principal.Listaproveedores[valorBuscador].apellido);
                         textNombre.setText(ventana_principal.Listaproveedores[valorBuscador].nombre);

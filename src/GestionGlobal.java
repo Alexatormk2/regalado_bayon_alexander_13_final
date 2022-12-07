@@ -1,50 +1,50 @@
 public class GestionGlobal {
 
-    String codigoGestion;
-    String piezasCodigo;
-    String proveedoresCodigo;
-    String proyectosCodigo;
+    int codigoGestion;
+   int piezasCodigo;
+    int proveedoresCodigo;
+   int proyectosCodigo;
 
     double cantidad;
 
 
-    public GestionGlobal(String codigoGestion, String piezasCodigo, String proveedoresCodigo, String proyectosCodigo, double cantidad) {
+    public GestionGlobal(int codigoGestion, int piezasCodigo, int proveedoresCodigo, int proyectosCodigo, double cantidad) {
+        this.codigoGestion = codigoGestion;
         this.piezasCodigo = piezasCodigo;
         this.proveedoresCodigo = proveedoresCodigo;
         this.proyectosCodigo = proyectosCodigo;
         this.cantidad = cantidad;
-        this.codigoGestion = codigoGestion;
     }
 
-    public String getCodigoGestion() {
+    public int getCodigoGestion() {
         return codigoGestion;
     }
 
-    public void setCodigoGestion(String codigoGestion) {
+    public void setCodigoGestion(int codigoGestion) {
         this.codigoGestion = codigoGestion;
     }
 
-    public String getPiezasCodigo() {
+    public int getPiezasCodigo() {
         return piezasCodigo;
     }
 
-    public void setPiezasCodigo(String piezasCodigo) {
+    public void setPiezasCodigo(int piezasCodigo) {
         this.piezasCodigo = piezasCodigo;
     }
 
-    public String getProveedoresCodigo() {
+    public int getProveedoresCodigo() {
         return proveedoresCodigo;
     }
 
-    public void setProveedoresCodigo(String proveedoresCodigo) {
+    public void setProveedoresCodigo(int proveedoresCodigo) {
         this.proveedoresCodigo = proveedoresCodigo;
     }
 
-    public String getProyectosCodigo() {
+    public int getProyectosCodigo() {
         return proyectosCodigo;
     }
 
-    public void setProyectosCodigo(String proyectosCodigo) {
+    public void setProyectosCodigo(int proyectosCodigo) {
         this.proyectosCodigo = proyectosCodigo;
     }
 

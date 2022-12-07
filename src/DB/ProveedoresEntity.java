@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "proveedores", schema = "empresa", catalog = "")
+@Table(name = "proveedores", schema = "empresa")
 public class ProveedoresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "CODIGO")
-    private String codigo;
+    private int codigo;
     @Basic
     @Column(name = "nombre")
     private String nombre;
@@ -20,11 +20,11 @@ public class ProveedoresEntity {
     @Column(name = "DIRECCION")
     private String direccion;
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -57,7 +57,7 @@ public class ProveedoresEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProveedoresEntity that = (ProveedoresEntity) o;
-        return Objects.equals(codigo, that.codigo) && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(direccion, that.direccion);
+        return codigo == that.codigo && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(direccion, that.direccion);
     }
 
     @Override

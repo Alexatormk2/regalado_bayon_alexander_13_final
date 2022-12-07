@@ -15,12 +15,13 @@ public class ConsultarNombreProyecto {
     private JComboBox comboProyectosCodigo;
     private JTextField textCodigo;
 
+    JPanel PanelConsultarProyectosNombre;
 
     String nombre;
     String codigoVer;
     int contador = 0;
     Proyectos[] ListaConsultasProyecto = new Proyectos[100];
-     JPanel PanelConsultarProyectosNombre;
+
 
     public ConsultarNombreProyecto() {
         buttonBuscar.addActionListener(new ActionListener() {
@@ -52,8 +53,8 @@ public class ConsultarNombreProyecto {
                         while (pstmt.getResultSet().next()) {
 
 
-                            comboProyectosCodigo.addItem(pstmt.getResultSet().getString(1));
-                            Proyectos proyectos = new Proyectos(pstmt.getResultSet().getString(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3));
+                            comboProyectosCodigo.addItem(pstmt.getResultSet().getInt(1));
+                            Proyectos proyectos = new Proyectos(pstmt.getResultSet().getInt(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3));
                             ListaConsultasProyecto[contador] = proyectos;
 
                             contador++;
@@ -90,7 +91,7 @@ public class ConsultarNombreProyecto {
                         }
                         codigoVer = String.valueOf(comboProyectosCodigo.getSelectedItem());
 
-                        textCodigo.setText(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].codigo);
+                        textCodigo.setText(String.valueOf(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].codigo));
                         textCiudad.setText(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].ciudad);
                         textNombre.setText(ListaConsultasProyecto[comboProyectosCodigo.getSelectedIndex()].nombre);
 

@@ -52,8 +52,8 @@ public class ConsultaProveedoresCodigo {
                         while (pstmt.getResultSet().next()) {
 
 
-                            comboProveedorCodigo.addItem(pstmt.getResultSet().getString(1));
-                            Proveedores proveedores = new Proveedores(pstmt.getResultSet().getString(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3), pstmt.getResultSet().getString(4));
+                            comboProveedorCodigo.addItem(String.valueOf(pstmt.getResultSet().getInt(1)));
+                            Proveedores proveedores = new Proveedores(pstmt.getResultSet().getInt(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3), pstmt.getResultSet().getString(4));
                             ListaConsultasProve[contador] = proveedores;
 
                             contador++;
@@ -92,7 +92,7 @@ public class ConsultaProveedoresCodigo {
                         }
                         codigoVer = String.valueOf(comboProveedorCodigo.getSelectedItem());
 
-                        textCodigo.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].codigo);
+                        textCodigo.setText(String.valueOf(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].codigo));
                         textApellido.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].apellido);
                         textNombre.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].nombre);
                         textDireccion.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].direccion);

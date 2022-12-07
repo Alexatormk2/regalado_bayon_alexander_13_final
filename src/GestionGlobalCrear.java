@@ -44,7 +44,7 @@ public class GestionGlobalCrear {
                     ResultSet resul = sentencia.executeQuery("SELECT * FROM PIEZAS;");
                     while (resul.next()) {
                         System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ", Precio: " + resul.getDouble(3) + ",Descripcion: " + resul.getString(4));
-                        Piezas piezas = new Piezas(resul.getString(1), resul.getString(2), resul.getDouble(3), resul.getString(4));
+                        Piezas piezas = new Piezas(resul.getInt(1), resul.getString(2), resul.getDouble(3), resul.getString(4));
 
                         ventana_principal.ListaPiezas[contador] = piezas;
                         contador++;
@@ -57,7 +57,7 @@ public class GestionGlobalCrear {
                         if (ventana_principal.ListaPiezas[a] == null) {
                             break;
                         } else {
-                            comboPiezas.addItem(ventana_principal.ListaPiezas[a].codigo);
+                            comboPiezas.addItem(String.valueOf(ventana_principal.ListaPiezas[a].codigo));
                         }
                     }
 
@@ -65,8 +65,8 @@ public class GestionGlobalCrear {
                     resul = sentencia.executeQuery("SELECT * FROM PROVEEDORES;");
                     while (resul.next()) {
                         //EMPLEADOS:	1-DNI VARCHAR, 2-NOMBRE VARCHAR, 3-APELLIDO VARCHAR, 4-FECHA_NACIMIENTO VARCHAR, 5-FECHA_CONTRATACION VARCHAR, 6-NACIONALIDAD VARCHAR, 7-CARGO VARCHAR, 8-AGENCIA VARCHAR
-                        System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ", Apellido: " + resul.getString(3) + ",Direccion: " + resul.getString(4));
-                        Proveedores proveedores1 = new Proveedores(resul.getString(1), resul.getString(2), resul.getString(3), resul.getString(4));
+                        System.out.println("- CODIGO: " + resul.getInt(1) + ", Nombre: " + resul.getString(2) + ", Apellido: " + resul.getString(3) + ",Direccion: " + resul.getString(4));
+                        Proveedores proveedores1 = new Proveedores(resul.getInt(1), resul.getString(2), resul.getString(3), resul.getString(4));
                         ventana_principal.Listaproveedores[contador] = proveedores1;
                         contador++;
                         if (contador == 100) {
@@ -78,7 +78,7 @@ public class GestionGlobalCrear {
                         if (ventana_principal.Listaproveedores[a] == null) {
                             break;
                         } else {
-                            comboProveedores.addItem(ventana_principal.Listaproveedores[a].codigo);
+                            comboProveedores.addItem(String.valueOf(ventana_principal.Listaproveedores[a].codigo));
                         }
                     }
 
@@ -87,7 +87,7 @@ public class GestionGlobalCrear {
                     while (resul.next()) {
                         //EMPLEADOS:	1-DNI VARCHAR, 2-NOMBRE VARCHAR, 3-APELLIDO VARCHAR, 4-FECHA_NACIMIENTO VARCHAR, 5-FECHA_CONTRATACION VARCHAR, 6-NACIONALIDAD VARCHAR, 7-CARGO VARCHAR, 8-AGENCIA VARCHAR
                         System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ",Ciudad: " + resul.getString(3));
-                        Proyectos proyectos1 = new Proyectos(resul.getString(1), resul.getString(2), resul.getString(3));
+                        Proyectos proyectos1 = new Proyectos(resul.getInt(1), resul.getString(2), resul.getString(3));
                         ventana_principal.ListadoProyectos[contador] = proyectos1;
                         contador++;
                         if (contador == 100) {
@@ -99,7 +99,7 @@ public class GestionGlobalCrear {
                         if (ventana_principal.ListadoProyectos[a] == null) {
                             break;
                         } else {
-                            comboProyectos.addItem(ventana_principal.ListadoProyectos[a].codigo);
+                            comboProyectos.addItem(String.valueOf(ventana_principal.ListadoProyectos[a].codigo));
                         }
                     }
 
@@ -201,19 +201,20 @@ public class GestionGlobalCrear {
 
                 try {
 
-                    String codigo = textGestion.getText().toUpperCase();
+                   int codigo = Integer.parseInt(textGestion.getText().toUpperCase());
 
 
-                    String CodigoProveedor = ventana_principal.Listaproveedores[comboProveedores.getSelectedIndex()].codigo;
+                   int CodigoProveedor = Integer.parseInt(String.valueOf(ventana_principal.Listaproveedores[comboProveedores.getSelectedIndex()].codigo));
 
 
                     double Cantidad = Double.parseDouble(textCantidad.getText());
 
-                    String codProyecto = ventana_principal.ListadoProyectos[comboProyectos.getSelectedIndex()].codigo;
-                    String codPriezas = ventana_principal.ListaPiezas[comboPiezas.getSelectedIndex()].codigo;
+                    int codProyecto = Integer.parseInt(String.valueOf(ventana_principal.ListadoProyectos[comboProyectos.getSelectedIndex()].codigo));
+                   int codPriezas = Integer.parseInt(String.valueOf(ventana_principal.ListaPiezas[comboPiezas.getSelectedIndex()].codigo));
                     //revisar que la longitud este bien controlada mediante if y else if
                     //revisar codigo
-                    if (codigo.length() != 6) {
+                    String revisar = String.valueOf(codigo);
+                    if (revisar.length() != 6) {
 
                         JOptionPane.showMessageDialog(null, "Error longitud de codigo superada o dato vacio por favor  vuelve a dar el dato tiene que ser de 6 caracteres max", "Erro", JOptionPane.ERROR_MESSAGE);
                         textGestion.setText("");
@@ -226,10 +227,10 @@ public class GestionGlobalCrear {
                         Class.forName("org.mariadb.jdbc.Driver");
                         conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
                         PreparedStatement pstmt = conexion.prepareStatement("INSERT INTO `gestion`(CODIGOGESTION, CODPROVEEDOR , CODPIEZA , CODPROYECTO,CANTIDAD) VALUES (?, ?, ?, ?,?)");
-                        pstmt.setString(1, codigo);
-                        pstmt.setString(2, CodigoProveedor);
-                        pstmt.setString(3, codPriezas);
-                        pstmt.setString(4, codProyecto);
+                        pstmt.setInt(1, codigo);
+                        pstmt.setInt(2, CodigoProveedor);
+                        pstmt.setInt(3, codPriezas);
+                        pstmt.setInt(4, codProyecto);
                         pstmt.setDouble(5, Cantidad);
                         textGestion.setText("");
                         textCantidad.setText("0");

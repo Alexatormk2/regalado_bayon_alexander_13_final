@@ -9,7 +9,7 @@ public class PiezasEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "CODIGO")
-    private String codigo;
+    private int codigo;
     @Basic
     @Column(name = "nombre")
     private String nombre;
@@ -20,11 +20,11 @@ public class PiezasEntity {
     @Column(name = "DESCRIPCION")
     private String descripcion;
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -57,7 +57,7 @@ public class PiezasEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PiezasEntity that = (PiezasEntity) o;
-        return Double.compare(that.precio, precio) == 0 && Objects.equals(codigo, that.codigo) && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion);
+        return codigo == that.codigo && Double.compare(that.precio, precio) == 0 && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion);
     }
 
     @Override

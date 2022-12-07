@@ -1,21 +1,21 @@
 public class Proveedores {
-    String codigo;
+  int codigo;
     String nombre;
     String apellido;
     String direccion;
 
-    public Proveedores(String codigo, String nombre, String apellido, String direccion) {
+    public Proveedores(int codigo, String nombre, String apellido, String direccion) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

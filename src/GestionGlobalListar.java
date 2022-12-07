@@ -44,7 +44,7 @@ public class GestionGlobalListar {
                     ResultSet resul = sentencia.executeQuery("SELECT * FROM gestion;");
                     while (resul.next()) {
                         System.out.println("- CODIGO Gestion: " + resul.getString(1) + "- CODIGO Proveedor: " + resul.getString(2) + ", CodigoPiezas: " + resul.getString(3) + ",Codigo Proyecto: " + resul.getString(4) + ",Cantidad: " + resul.getDouble(5));
-                        GestionGlobal gestionGlobal = new GestionGlobal(resul.getString(1), resul.getString(2), resul.getString(3), resul.getString(4), resul.getDouble(5));
+                        GestionGlobal gestionGlobal = new GestionGlobal(resul.getInt(1), resul.getInt(2), resul.getInt(3), resul.getInt(4), resul.getDouble(5));
 
                         ventana_principal.ListaGestion[contador] = gestionGlobal;
                         contador++;
@@ -56,9 +56,9 @@ public class GestionGlobalListar {
                     textRegistrosNumber.setText("0");
                     textMaxREG.setText(String.valueOf(contador - 1));
                     valorBuscador = 0;
-                    textCodigoGestion.setText(ventana_principal.ListaGestion[0].codigoGestion);
-                    textCodigoPiezas.setText(ventana_principal.ListaGestion[0].piezasCodigo);
-                    textCodigoProyecto.setText(ventana_principal.ListaGestion[0].proyectosCodigo);
+                    textCodigoGestion.setText(String.valueOf(ventana_principal.ListaGestion[0].codigoGestion));
+                    textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaGestion[0].piezasCodigo));
+                    textCodigoProyecto.setText(String.valueOf(ventana_principal.ListaGestion[0].proyectosCodigo));
                     textProveedorCodigo.setText(String.valueOf(ventana_principal.ListaGestion[0].proveedoresCodigo));
                     textCantidad.setText(String.valueOf(ventana_principal.ListaGestion[0].cantidad));
 
@@ -87,9 +87,9 @@ public class GestionGlobalListar {
                         valorBuscador++;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoGestion.setText(ventana_principal.ListaGestion[valorBuscador].codigoGestion);
-                        textCodigoPiezas.setText(ventana_principal.ListaGestion[valorBuscador].piezasCodigo);
-                        textCodigoProyecto.setText(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo);
+                        textCodigoGestion.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].codigoGestion));
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].piezasCodigo));
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo));
                         textProveedorCodigo.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proveedoresCodigo));
                         textCantidad.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].cantidad));
 
@@ -121,9 +121,9 @@ public class GestionGlobalListar {
                         valorBuscador = contador - 1;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoGestion.setText(ventana_principal.ListaGestion[valorBuscador].codigoGestion);
-                        textCodigoPiezas.setText(ventana_principal.ListaGestion[valorBuscador].piezasCodigo);
-                        textCodigoProyecto.setText(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo);
+                        textCodigoGestion.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].codigoGestion));
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].piezasCodigo));
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo));
                         textProveedorCodigo.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proveedoresCodigo));
                         textCantidad.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].cantidad));
 
@@ -156,9 +156,9 @@ public class GestionGlobalListar {
                         valorBuscador--;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoGestion.setText(ventana_principal.ListaGestion[valorBuscador].codigoGestion);
-                        textCodigoPiezas.setText(ventana_principal.ListaGestion[valorBuscador].piezasCodigo);
-                        textCodigoProyecto.setText(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo);
+                        textCodigoGestion.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].codigoGestion));
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].piezasCodigo));
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo));
                         textProveedorCodigo.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proveedoresCodigo));
                         textCantidad.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].cantidad));
 
@@ -189,9 +189,9 @@ public class GestionGlobalListar {
                         valorBuscador = 0;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoGestion.setText(ventana_principal.ListaGestion[valorBuscador].codigoGestion);
-                        textCodigoPiezas.setText(ventana_principal.ListaGestion[valorBuscador].piezasCodigo);
-                        textCodigoProyecto.setText(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo);
+                        textCodigoGestion.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].codigoGestion));
+                        textCodigoPiezas.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].piezasCodigo));
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proyectosCodigo));
                         textProveedorCodigo.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].proveedoresCodigo));
                         textCantidad.setText(String.valueOf(ventana_principal.ListaGestion[valorBuscador].cantidad));
 

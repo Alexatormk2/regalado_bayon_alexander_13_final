@@ -11,49 +11,49 @@ public class GestionEntityPK implements Serializable {
     @Column(name = "CodigoGestion")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String codigoGestion;
+    private int codigoGestion;
     @Column(name = "CODPROVEEDOR")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String codproveedor;
+    private int codproveedor;
     @Column(name = "CODPIEZA")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String codpieza;
+    private int codpieza;
     @Column(name = "CODPROYECTO")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String codproyecto;
+    private int codproyecto;
 
-    public String getCodigoGestion() {
+    public int getCodigoGestion() {
         return codigoGestion;
     }
 
-    public void setCodigoGestion(String codigoGestion) {
+    public void setCodigoGestion(int codigoGestion) {
         this.codigoGestion = codigoGestion;
     }
 
-    public String getCodproveedor() {
+    public int getCodproveedor() {
         return codproveedor;
     }
 
-    public void setCodproveedor(String codproveedor) {
+    public void setCodproveedor(int codproveedor) {
         this.codproveedor = codproveedor;
     }
 
-    public String getCodpieza() {
+    public int getCodpieza() {
         return codpieza;
     }
 
-    public void setCodpieza(String codpieza) {
+    public void setCodpieza(int codpieza) {
         this.codpieza = codpieza;
     }
 
-    public String getCodproyecto() {
+    public int getCodproyecto() {
         return codproyecto;
     }
 
-    public void setCodproyecto(String codproyecto) {
+    public void setCodproyecto(int codproyecto) {
         this.codproyecto = codproyecto;
     }
 
@@ -62,7 +62,7 @@ public class GestionEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GestionEntityPK that = (GestionEntityPK) o;
-        return Objects.equals(codigoGestion, that.codigoGestion) && Objects.equals(codproveedor, that.codproveedor) && Objects.equals(codpieza, that.codpieza) && Objects.equals(codproyecto, that.codproyecto);
+        return codigoGestion == that.codigoGestion && codproveedor == that.codproveedor && codpieza == that.codpieza && codproyecto == that.codproyecto;
     }
 
     @Override

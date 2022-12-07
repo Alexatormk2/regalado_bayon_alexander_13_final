@@ -1,3 +1,9 @@
+import DB.PiezasEntity;
+import DB.ProveedoresEntity;
+import hibernate.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.Statement;
 import org.mariadb.jdbc.client.result.ResultSetMetaData;
@@ -18,6 +24,7 @@ public class ModificarProveedor {
     private JComboBox comboCampo;
     private JComboBox<String> comboCodigoEdit;
     private JButton buttonCargarDatos;
+    private JButton guardarHibernateButton;
 
     static String codigoVer;
 
@@ -155,6 +162,57 @@ public class ModificarProveedor {
 
                 }
 
+            }
+        });
+        guardarHibernateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               int codigo;
+               int input;
+                String dato;
+                String datoNuevo;
+
+                Session session = HibernateUtil.sessionFactory.openSession();
+                Transaction tx = session.beginTransaction();
+                ProveedoresEntity proveedores = new ProveedoresEntity();
+                try {
+
+
+                    input = Integer.parseInt(Objects.requireNonNull(comboCodigoEdit.getSelectedItem()).toString());
+                    proveedores = session.load(ProveedoresEntity.class, input);
+
+                    System.out.println(input);
+                    dato = Objects.requireNonNull(comboCampo.getSelectedItem()).toString();
+                    System.out.println(dato);
+
+
+                    datoNuevo = String.valueOf((textDatoEditado.getText()));
+                    if (comboCampo.getSelectedItem().equals("Nombre")) {
+
+
+                        proveedores.setNombre(datoNuevo);
+
+
+                    } else if (comboCampo.getSelectedItem().equals("Direccion")) {
+                        proveedores.setDireccion(datoNuevo);
+
+                    } else if (comboCampo.getSelectedItem().equals("Apellido")) {
+
+                        proveedores.setApellido(datoNuevo);
+                    }
+
+
+                    session.update(proveedores);
+                    tx.commit();
+                    JOptionPane.showMessageDialog(null, "Modificado con exito", "OK", JOptionPane.ERROR_MESSAGE);
+
+
+                } catch (ConstraintViolationException de) {
+                    JOptionPane.showMessageDialog(null, "Duplicado detectado", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, de.getMessage());
+                    JOptionPane.showMessageDialog(null, de.getErrorCode());
+                    JOptionPane.showMessageDialog(null, de.getSQLException().getMessage());
+                }
             }
         });
     }

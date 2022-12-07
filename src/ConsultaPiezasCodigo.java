@@ -52,13 +52,13 @@ public class ConsultaPiezasCodigo {
 
                         conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3386/empresa", "root", "root");
                         PreparedStatement pstmt = conexion.prepareStatement("SELECT  * FROM PIEZAS WHERE upper( codigo) like ? ");
-                        pstmt.setString(1, "%" + codigo + "%");
+                        pstmt.setInt(1, Integer.parseInt("%" + codigo + "%"));
                         pstmt.executeQuery();
                         while (pstmt.getResultSet().next()) {
 
 
                             comboPiezarCodigo.addItem(pstmt.getResultSet().getString(1));
-                            Piezas pieza = new Piezas(pstmt.getResultSet().getString(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getDouble(3), pstmt.getResultSet().getString(4));
+                            Piezas pieza = new Piezas(pstmt.getResultSet().getInt(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getDouble(3), pstmt.getResultSet().getString(4));
                             ListaConsultasPieza[contador] = pieza;
 
                             contador++;
@@ -97,7 +97,7 @@ public class ConsultaPiezasCodigo {
                         }
                         codigoVer = String.valueOf(comboPiezarCodigo.getSelectedItem());
 
-                        textCodigo.setText(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].codigo);
+                        textCodigo.setText(String.valueOf(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].codigo));
                         textDescripcion.setText(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].descrpcion);
                         textNombre.setText(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].Nombre);
                         textPrecio.setText(String.valueOf(ListaConsultasPieza[comboPiezarCodigo.getSelectedIndex()].precio));
