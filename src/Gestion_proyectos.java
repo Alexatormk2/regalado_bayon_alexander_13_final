@@ -1,5 +1,7 @@
+import DB.ProveedoresEntity;
 import DB.ProyectosEntity;
 import hibernate.HibernateUtil;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 
 import org.hibernate.Transaction;
@@ -10,10 +12,12 @@ import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class Gestion_proyectos {
     private JButton limpiarButtonProve;
@@ -229,5 +233,7 @@ public class Gestion_proyectos {
                 ventana_principal.frameModificarProyectos.setVisible(true);
             }
         });
+
+
     }
 }
