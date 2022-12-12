@@ -43,7 +43,7 @@ public class listado_proyectos {
                     while (resul.next()) {
                         //EMPLEADOS:	1-DNI VARCHAR, 2-NOMBRE VARCHAR, 3-APELLIDO VARCHAR, 4-FECHA_NACIMIENTO VARCHAR, 5-FECHA_CONTRATACION VARCHAR, 6-NACIONALIDAD VARCHAR, 7-CARGO VARCHAR, 8-AGENCIA VARCHAR
                         System.out.println("- CODIGO: " + resul.getString(1) + ", Nombre: " + resul.getString(2) + ",Ciudad: " + resul.getString(3));
-                        Proyectos proyectos1 = new Proyectos(resul.getString(1), resul.getString(2), resul.getString(3));
+                        Proyectos proyectos1 = new Proyectos(resul.getInt(1), resul.getString(2), resul.getString(3));
                         ventana_principal.ListadoProyectos[contador] = proyectos1;
                         contador++;
                         if (contador == 100) {
@@ -54,15 +54,18 @@ public class listado_proyectos {
                     textRegistrosNumber.setText("0");
                     textMaxREG.setText(String.valueOf(contador - 1));
                     valorBuscador = 0;
-                    textCodigoProyecto.setText(ventana_principal.ListadoProyectos[0].codigo);
+                    textCodigoProyecto.setText(String.valueOf(ventana_principal.ListadoProyectos[0].codigo));
                     textCiudad.setText(ventana_principal.ListadoProyectos[0].ciudad);
                     textNombre.setText(ventana_principal.ListadoProyectos[0].nombre);
 
 
                 } catch (ClassNotFoundException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(null,"Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,ex);
+
                 } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(null,"Error en la conexion o en la consulta por favor revise","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,ex);
                 }
 
 
@@ -80,7 +83,7 @@ public class listado_proyectos {
                         valorBuscador++;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProyecto.setText(ventana_principal.ListadoProyectos[valorBuscador].codigo);
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListadoProyectos[valorBuscador].codigo));
                         textCiudad.setText(ventana_principal.ListadoProyectos[valorBuscador].ciudad);
                         textNombre.setText(ventana_principal.ListadoProyectos[valorBuscador].nombre);
 
@@ -109,7 +112,7 @@ public class listado_proyectos {
                         valorBuscador--;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProyecto.setText(ventana_principal.ListadoProyectos[valorBuscador].codigo);
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListadoProyectos[valorBuscador].codigo));
                         textCiudad.setText(ventana_principal.ListadoProyectos[valorBuscador].ciudad);
                         textNombre.setText(ventana_principal.ListadoProyectos[valorBuscador].nombre);
 
@@ -136,7 +139,7 @@ public class listado_proyectos {
                         valorBuscador = contador - 1;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProyecto.setText(ventana_principal.ListadoProyectos[valorBuscador].codigo);
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListadoProyectos[valorBuscador].codigo));
                         textCiudad.setText(ventana_principal.ListadoProyectos[valorBuscador].ciudad);
                         textNombre.setText(ventana_principal.ListadoProyectos[valorBuscador].nombre);
 
@@ -165,7 +168,7 @@ public class listado_proyectos {
                         valorBuscador = 0;
 
                         textRegistrosNumber.setText(String.valueOf(valorBuscador));
-                        textCodigoProyecto.setText(ventana_principal.ListadoProyectos[valorBuscador].codigo);
+                        textCodigoProyecto.setText(String.valueOf(ventana_principal.ListadoProyectos[valorBuscador].codigo));
                         textCiudad.setText(ventana_principal.ListadoProyectos[valorBuscador].ciudad);
                         textNombre.setText(ventana_principal.ListadoProyectos[valorBuscador].nombre);
 

@@ -53,8 +53,8 @@ public class ConsultaProveedorDireccion {
                         while (pstmt.getResultSet().next()) {
 
 
-                            comboProveedorCodigo.addItem(pstmt.getResultSet().getString(1));
-                            Proveedores proveedores = new Proveedores(pstmt.getResultSet().getString(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3), pstmt.getResultSet().getString(4));
+                            comboProveedorCodigo.addItem(pstmt.getResultSet().getInt(1));
+                            Proveedores proveedores = new Proveedores(pstmt.getResultSet().getInt(1), pstmt.getResultSet().getString(2), pstmt.getResultSet().getString(3), pstmt.getResultSet().getString(4));
                             ListaConsultasProve[contador] = proveedores;
 
                             contador++;
@@ -63,12 +63,12 @@ public class ConsultaProveedorDireccion {
 
 
                     } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, ex, "Error la consulta esta  mal escrita o algun dato de la conexion esta mal", JOptionPane.ERROR_MESSAGE);
-
+                        JOptionPane.showMessageDialog(null,"Error en la conexion o en la consulta por favor revise","Error",JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,ex);
 
                     } catch (ClassNotFoundException ex) {
-                        JOptionPane.showMessageDialog(null, ex, "Error  de clase, no se pudo encontrar", JOptionPane.ERROR_MESSAGE);
-
+                        JOptionPane.showMessageDialog(null,"Error en la clase  por favor revise la configuracion del run o si esa clase tiene static para que se vea","Error",JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,ex);
                     } catch (Exception ea) {
                         JOptionPane.showMessageDialog(null, ea, "Error  datos vacios", JOptionPane.ERROR_MESSAGE);
 
@@ -93,7 +93,7 @@ public class ConsultaProveedorDireccion {
                         }
                         codigoVer = String.valueOf(comboProveedorCodigo.getSelectedItem());
 
-                        textCodigo.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].codigo);
+                        textCodigo.setText(String.valueOf(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].codigo));
                         textApellido.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].apellido);
                         textNombre.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].nombre);
                         textDireccion.setText(ListaConsultasProve[comboProveedorCodigo.getSelectedIndex()].direccion);

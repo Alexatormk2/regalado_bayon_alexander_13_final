@@ -1,21 +1,25 @@
 public class Proyectos {
 
-String codigo;
+int codigo;
 
 String nombre;
 String ciudad;
 
-    public Proyectos(String codigo, String nombre, String ciudad) {
+    public Proyectos(int  codigo, String nombre, String ciudad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.ciudad = ciudad;
     }
 
-    public String getCodigo() {
+    public Proyectos() {
+
+    }
+
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

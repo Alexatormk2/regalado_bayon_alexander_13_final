@@ -14,5 +14,11 @@ JPanel PanelPieza;
                 ventana_principal.frameGestionPiezas.setVisible(true);
             }
         });
+        buttonConsultasPIezas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana_principal.frameMenuConsultasPiezas.setVisible(true);
+            }
+        });
     }
 }
